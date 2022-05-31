@@ -1,1 +1,468 @@
-{"current":{"hero_header_desktop":false,"hero_header_mobile":false,"icon":"material-icons-outlined","enable_history_state":true,"show_locale_selector":false,"show_currency_selector":false,"newsletter_optin":false,"show_top_button":false,"enable_payment_button":true,"sale_type":"percentage","cart_notes_enable":false,"cart_type":"drawer","cart_cost_checkout":true,"color_announcement_bg":"#000000","color_default":"#f2f2f2","color_primary":"#ffd814","color_button_text":"#000000","color_secondary":"#1496ff","color_input":"#f2f2f2","color_sales_price":"#d40000","color_drawer_bg":"#2e2e2e","color_drawer_default":"#686868","color_drawer_border":"#FFFFFF","color_drawer_primary":"#ffd814","color_drawer_button_text":"#000000","color_drawer_secondary":"#1496ff","color_drawer_input":"#000000","color_drawer_sales_price":"#FFFFFF","color_footer_bg":"#353535","color_footer_border":"#353535","color_footer_primary":"#ffd814","color_footer_button_text":"#000000","color_footer_secondary":"#1496ff","color_footer_input":"#000000","favicon":"shopify:\/\/shop_images\/geometric.png","review_app":"ryviu","share_facebook":false,"share_twitter":false,"share_pinterest":false,"share_whatsapp":false,"share_email":false,"share_messenger":false,"header_family":"roboto_n5","accent_family":"roboto_n5","base_family":"roboto_n4","dbtfy_cart_goal":false,"dbtfy_cart_savings":false,"dbtfy_cart_reminder":false,"dbtfy_cart_upsell":false,"dbtfy_minimum_order":false,"dbtfy_quantity_breaks":false,"dbtfy_upsell_bundles":false,"dbtfy_upsell_popup":false,"dbtfy_addtocart_animation":false,"dbtfy_cart_discount":false,"dbtfy_cart_favicon":false,"dbtfy_customizable_products":false,"dbtfy_delivery_time":false,"dbtfy_discount_saved":true,"dbtfy_inactive_tab_message":false,"dbtfy_inventory_quantity":false,"dbtfy_sales_countdown":false,"dbtfy_trust_badge":false,"dbtfy_back_in_stock":false,"dbtfy_instagram_feed":false,"dbtfy_newsletter_popup":false,"dbtfy_order_feedback":false,"dbtfy_social_discount":false,"dbtfy_wish_list":false,"dbtfy_collection_addtocart":true,"dbtfy_collection_filters":false,"dbtfy_color_swatches":false,"dbtfy_custom_currencies":false,"dbtfy_delivery_date":false,"dbtfy_faq_page":false,"dbtfy_infinite_scroll":false,"dbtfy_mega_menu":false,"dbtfy_menu_bar":false,"dbtfy_order_tracking":false,"dbtfy_pricing_table":false,"dbtfy_product_image_crop":false,"dbtfy_product_swatches":false,"dbtfy_product_tabs":false,"dbtfy_quick_compare":false,"dbtfy_quick_view":false,"dbtfy_recently_viewed":false,"dbtfy_size_chart":false,"dbtfy_smart_search":false,"dbtfy_synced_variant_image":false,"dbtfy_cookie_box":false,"dbtfy_shop_protect":false,"dbtfy_cookie_box_inverted":false,"dbtfy_cookie_box_eu_only":false,"dbtfy_sticky_addtocart_animation":true,"dbtfy_trust_badge_product":false,"dbtfy_trust_badge_cart":false,"dbtfy_trust_badge_text_small":true,"checkout_logo_image":"shopify:\/\/shop_images\/shopCheck_2_2_2_2_2_2_4_2_3_1.png","checkout_logo_position":"center","checkout_heading_font":"Roboto","checkout_body_font":"Roboto","checkout_accent_color":"#000000","checkout_button_color":"#ffd814","sections":{"dbtfy-bullet-points":{"type":"dbtfy-bullet-points","blocks":{"33b3cbe3-80e6-4919-92d4-f11ad9421b13":{"type":"point","settings":{"title":"","dbtfy_bullet_point_text_1":"<p>Betal senere med Klarna<\/p>","dbtfy_bullet_point_icon_1":"check_circle","visibility_1":"all","dbtfy_bullet_point_collection_1":"","dbtfy_bullet_point_type_1":"","dbtfy_bullet_point_tag_1":"","dbtfy_bullet_point_product_1":"","dbtfy_bullet_point_text_2":"<p>Vegansk og grusomhetsfri<\/p>","dbtfy_bullet_point_icon_2":"check_circle","visibility_2":"all","dbtfy_bullet_point_collection_2":"","dbtfy_bullet_point_type_2":"","dbtfy_bullet_point_tag_2":"","dbtfy_bullet_point_product_2":"","dbtfy_bullet_point_text_3":"<p>Miljøvennlig<\/p>","dbtfy_bullet_point_icon_3":"check_circle","visibility_3":"all","dbtfy_bullet_point_collection_3":"","dbtfy_bullet_point_type_3":"","dbtfy_bullet_point_tag_3":"","dbtfy_bullet_point_product_3":"","dbtfy_bullet_point_text_4":"","dbtfy_bullet_point_icon_4":"check_circle","visibility_4":"all","dbtfy_bullet_point_collection_4":"","dbtfy_bullet_point_type_4":"","dbtfy_bullet_point_tag_4":"","dbtfy_bullet_point_product_4":"","dbtfy_bullet_point_text_5":"","dbtfy_bullet_point_icon_5":"check_circle","visibility_5":"all","dbtfy_bullet_point_collection_5":"","dbtfy_bullet_point_type_5":"","dbtfy_bullet_point_tag_5":"","dbtfy_bullet_point_product_5":"","dbtfy_bullet_point_text_6":"","dbtfy_bullet_point_icon_6":"check_circle","visibility_6":"all","dbtfy_bullet_point_collection_6":"","dbtfy_bullet_point_type_6":"","dbtfy_bullet_point_tag_6":"","dbtfy_bullet_point_product_6":"","dbtfy_bullet_point_text_7":"","dbtfy_bullet_point_icon_7":"check_circle","visibility_7":"all","dbtfy_bullet_point_collection_7":"","dbtfy_bullet_point_type_7":"","dbtfy_bullet_point_tag_7":"","dbtfy_bullet_point_product_7":"","dbtfy_bullet_point_text_8":"","dbtfy_bullet_point_icon_8":"check_circle","visibility_8":"all","dbtfy_bullet_point_collection_8":"","dbtfy_bullet_point_type_8":"","dbtfy_bullet_point_tag_8":"","dbtfy_bullet_point_product_8":"","dbtfy_bullet_point_text_9":"","dbtfy_bullet_point_icon_9":"check_circle","visibility_9":"all","dbtfy_bullet_point_collection_9":"","dbtfy_bullet_point_type_9":"","dbtfy_bullet_point_tag_9":"","dbtfy_bullet_point_product_9":"","dbtfy_bullet_point_text_10":"","dbtfy_bullet_point_icon_10":"check_circle","visibility_10":"all","dbtfy_bullet_point_collection_10":"","dbtfy_bullet_point_type_10":"","dbtfy_bullet_point_tag_10":"","dbtfy_bullet_point_product_10":""}}},"block_order":["33b3cbe3-80e6-4919-92d4-f11ad9421b13"],"settings":{"dbtfy_bullet_points_position":"under-product-price","dbtfy_bullet_points_alignment":"left","dbtfy_bullet_points_display_type":"newline"}},"dbtfy-cart-goal":{"type":"dbtfy-cart-goal","settings":{"dbtfy_cart_goal_before_text":"You're","dbtfy_cart_goal_amount":"70","dbtfy_cart_goal_after_text":"away from FREE shipping!","dbtfy_cart_goal_reached_text":"You are eligible for FREE shipping!","dbtfy_cart_goal_icons":"local_shipping"}},"dbtfy-cart-upsell":{"type":"dbtfy-cart-upsell","settings":{"dbtfy_cart_upsell_button_style":"btn--primary"}},"dbtfy-color-swatches":{"type":"dbtfy-color-swatches","settings":{}},"dbtfy-customizable-products":{"type":"dbtfy-customizable-products","settings":{}},"dbtfy-delivery-time":{"type":"dbtfy-delivery-time","settings":{"dbtfy_delivery_time_position":"under-addtocart-button"}},"dbtfy-product-tabs":{"type":"dbtfy-product-tabs","settings":{"dbtfy_product_tabs_display_type":"vertical"}},"dbtfy-product-swatches":{"type":"dbtfy-product-swatches","settings":{"dbtfy_product_swatches_show_in_grid":true}},"dbtfy-quantity-breaks":{"type":"dbtfy-quantity-breaks","settings":{"dbtfy_quantity_breaks_single_text":"Buy _COUNT_: _PRICE_ _SAVED_AMOUNT_","dbtfy_quantity_breaks_price_type":"total_price","dbtfy_quantity_breaks_more_discount_text_before":"Add","dbtfy_quantity_breaks_more_discount_text_after":"more item to unlock","dbtfy_quantity_breaks_more_discount_text_after_percentage":"off","dbtfy_quantity_breaks_highest_discount_text":"Highest discount applied!"}},"dbtfy-sales-countdown":{"type":"dbtfy-sales-countdown","settings":{"dbtfy_sales_countdown_icons":"local_fire_department","dbtfy_sales_countdown_prefix":"Sale ends in","dbtfy_sales_countdown_suffix":"","dbtfy_sales_countdown_d":"d","dbtfy_sales_countdown_h":"h","dbtfy_sales_countdown_m":"m","dbtfy_sales_countdown_s":"s"}},"dbtfy-size-chart":{"type":"dbtfy-size-chart","settings":{"dbtfy_size_chart_icon":"straighten","dbtfy_size_chart_title":"Size chart","dbtfy_size_chart_width":"large"}},"dbtfy-upsell-popup":{"type":"dbtfy-upsell-popup","settings":{"dbtfy_upsell_popup_width":"","dbtfy_upsell_popup_description":"See product details","dbtfy_upsell_popup_cart":"No thanks","dbtfy_upsell_popup_checkout":"Go to checkout →","text_alignment":"text-center","dbtfy_upsell_popup_range":75}},"drawer-menu":{"type":"drawer-menu","settings":{"drawer_link_toggle":true,"email":true,"phone":true,"show_social_medias":true,"hide_menu_icon":true,"title":"Menu","drawer_top_link_list":"main-menu","drawer_bottom_link_list":"footer"}},"announcement":{"type":"announcement","blocks":{"announcement-0":{"type":"message","settings":{"title":"","announcement_text":"<p><strong>Rask og gratis frakt | Betal senere med Klarna<\/strong><\/p>"}}},"block_order":["announcement-0"],"settings":{"show_announcement":true,"small_announcement_text":true,"show_social":false,"email":false,"phone":false,"left_message":"","right_message":"","announcement_autoplayspeed":5}},"header":{"type":"header","settings":{"main_menu_link_list":"main-menu","navigation_type":"center","logo_link":true,"default_logo":"shopify:\/\/shop_images\/norway_logo_6ab0d5c6-1e41-4fbc-92dd-d2a9f2e5da36.png","default_logo_svg":"","inverted_logo_svg":"","mobile_logo_svg":"","logo_width":200,"logo_mobile_width":150}},"dbtfy-instagram-feed":{"type":"dbtfy-instagram-feed","settings":{"dbtfy_instagram_feed_icon":false,"dbtfy_instagram_feed_access_token":"","dbtfy_instagram_feed_full_width":false,"title":"From our Instagram","subtitle":"","dbtfy_instagram_feed_section_style":"section-border","dbtfy_instagram_feed_rows":"1","dbtfy_instagram_feed_desktop_grid":"6","dbtfy_instagram_feed_mobile_grid":"3"}},"guarantee":{"type":"guarantee","blocks":{"guarantee-0":{"type":"text","settings":{"title":"","guarantee_icon":"contact_support","heading_text":"24\/7 KUNDESERVICE","text":"<p>Fyll ut kontaktskjemaet for alle dine spørsmål, så kommer vi tilbake til deg innen 24 timer!<\/p>","button_style":"btn-outline-primary","button_label":"","button_link":""}},"guarantee-1":{"type":"text","settings":{"title":"","guarantee_icon":"local_shipping","heading_text":"GRATIS LEVERING","text":"<p>KjaerlighetsLiv gjør sitt ytterste for å levere raskt og tilbyr gratis frakt<\/p>","button_style":"btn-outline-primary","button_label":"","button_link":""}},"guarantee-2":{"type":"text","settings":{"title":"","guarantee_icon":"credit_card","heading_text":"SIKRE BETALINGER","text":"<p>Bruk mange forskjellige betalingsalternativer som Klarna, Visa, Mastercard og AMEX!<\/p>","button_style":"btn-outline-primary","button_label":"","button_link":""}}},"block_order":["guarantee-0","guarantee-1","guarantee-2"],"settings":{"show_guarantee":true,"guarantee_size":"xl","section_style":"section-border"}},"footer":{"type":"footer","blocks":{"footer-0":{"type":"text","settings":{"title":"","column_width":2,"svg":"","img_url":"","logo_width":150,"heading_text":"Kontakt","subtitle":"","text":"","email":true,"phone":false,"show_social_media":false}},"footer-1":{"type":"link_list","settings":{"title":"","column_width":1,"heading_text":"Kundeinformasjon","subtitle":"","footer_link_list":"footer"}},"7e892b4f-a169-4c15-b6b7-8158aac45d2b":{"type":"newsletter","settings":{"title":"","column_width":2,"heading_text":"Abonner på vårt nyhetsbrev","subtitle":"","customer_tag":"newsletter"}}},"block_order":["footer-0","footer-1","7e892b4f-a169-4c15-b6b7-8158aac45d2b"],"settings":{"show_social_media":false,"social_media_position_desktop":"right","social_title":"Follow-us on social media!","show_payment_icons":true,"show_shopify_footer":false,"show_debutify_footer":false,"custom_credential":""}},"dbtfy-collection-filters":{"type":"dbtfy-collection-filters","settings":{"clear_label":"Clear","clear_all_label":"Clear All","hide_unavailable_options":false,"visibility_tags_count":"none"}}},"content_for_index":[]}}
+{
+  "current": {
+    "hero_header_desktop": false,
+    "hero_header_mobile": false,
+    "icon": "material-icons-outlined",
+    "enable_history_state": true,
+    "show_locale_selector": false,
+    "show_currency_selector": false,
+    "newsletter_optin": false,
+    "show_top_button": false,
+    "enable_payment_button": true,
+    "sale_type": "percentage",
+    "cart_notes_enable": false,
+    "cart_type": "drawer",
+    "cart_cost_checkout": true,
+    "color_announcement_bg": "#000000",
+    "color_default": "#f2f2f2",
+    "color_primary": "#ffd814",
+    "color_button_text": "#000000",
+    "color_secondary": "#1496ff",
+    "color_input": "#f2f2f2",
+    "color_sales_price": "#d40000",
+    "color_drawer_bg": "#2e2e2e",
+    "color_drawer_default": "#686868",
+    "color_drawer_border": "#FFFFFF",
+    "color_drawer_primary": "#ffd814",
+    "color_drawer_button_text": "#000000",
+    "color_drawer_secondary": "#1496ff",
+    "color_drawer_input": "#000000",
+    "color_drawer_sales_price": "#FFFFFF",
+    "color_footer_bg": "#353535",
+    "color_footer_border": "#353535",
+    "color_footer_primary": "#ffd814",
+    "color_footer_button_text": "#000000",
+    "color_footer_secondary": "#1496ff",
+    "color_footer_input": "#000000",
+    "favicon": "shopify:\/\/shop_images\/geometric.png",
+    "review_app": "ryviu",
+    "share_facebook": false,
+    "share_twitter": false,
+    "share_pinterest": false,
+    "share_whatsapp": false,
+    "share_email": false,
+    "share_messenger": false,
+    "header_family": "roboto_n5",
+    "accent_family": "roboto_n5",
+    "base_family": "roboto_n4",
+    "dbtfy_cart_goal": false,
+    "dbtfy_cart_savings": false,
+    "dbtfy_cart_reminder": false,
+    "dbtfy_cart_upsell": false,
+    "dbtfy_minimum_order": false,
+    "dbtfy_quantity_breaks": false,
+    "dbtfy_upsell_bundles": false,
+    "dbtfy_upsell_popup": false,
+    "dbtfy_addtocart_animation": false,
+    "dbtfy_cart_discount": false,
+    "dbtfy_cart_favicon": false,
+    "dbtfy_customizable_products": false,
+    "dbtfy_delivery_time": false,
+    "dbtfy_discount_saved": true,
+    "dbtfy_inactive_tab_message": false,
+    "dbtfy_inventory_quantity": false,
+    "dbtfy_sales_countdown": false,
+    "dbtfy_trust_badge": false,
+    "dbtfy_back_in_stock": false,
+    "dbtfy_instagram_feed": false,
+    "dbtfy_newsletter_popup": false,
+    "dbtfy_order_feedback": false,
+    "dbtfy_social_discount": false,
+    "dbtfy_wish_list": false,
+    "dbtfy_collection_addtocart": true,
+    "dbtfy_collection_filters": false,
+    "dbtfy_color_swatches": false,
+    "dbtfy_custom_currencies": false,
+    "dbtfy_delivery_date": false,
+    "dbtfy_faq_page": false,
+    "dbtfy_infinite_scroll": false,
+    "dbtfy_mega_menu": false,
+    "dbtfy_menu_bar": false,
+    "dbtfy_order_tracking": false,
+    "dbtfy_pricing_table": false,
+    "dbtfy_product_image_crop": false,
+    "dbtfy_product_swatches": false,
+    "dbtfy_product_tabs": false,
+    "dbtfy_quick_compare": false,
+    "dbtfy_quick_view": false,
+    "dbtfy_recently_viewed": false,
+    "dbtfy_size_chart": false,
+    "dbtfy_smart_search": false,
+    "dbtfy_synced_variant_image": false,
+    "dbtfy_cookie_box": false,
+    "dbtfy_shop_protect": false,
+    "dbtfy_cookie_box_inverted": false,
+    "dbtfy_cookie_box_eu_only": false,
+    "dbtfy_sticky_addtocart_animation": true,
+    "dbtfy_trust_badge_product": false,
+    "dbtfy_trust_badge_cart": false,
+    "dbtfy_trust_badge_text_small": true,
+    "checkout_logo_image": "shopify:\/\/shop_images\/shopCheck_2_2_2_2_2_2_4_2_3_1.png",
+    "checkout_logo_position": "center",
+    "checkout_heading_font": "Roboto",
+    "checkout_body_font": "Roboto",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#ffd814",
+    "sections": {
+      "dbtfy-bullet-points": {
+        "type": "dbtfy-bullet-points",
+        "blocks": {
+          "33b3cbe3-80e6-4919-92d4-f11ad9421b13": {
+            "type": "point",
+            "settings": {
+              "title": "",
+              "dbtfy_bullet_point_text_1": "<p>Betal senere med Klarna<\/p>",
+              "dbtfy_bullet_point_icon_1": "check_circle",
+              "visibility_1": "all",
+              "dbtfy_bullet_point_collection_1": "",
+              "dbtfy_bullet_point_type_1": "",
+              "dbtfy_bullet_point_tag_1": "",
+              "dbtfy_bullet_point_product_1": "",
+              "dbtfy_bullet_point_text_2": "<p>Vegansk og grusomhetsfri<\/p>",
+              "dbtfy_bullet_point_icon_2": "check_circle",
+              "visibility_2": "all",
+              "dbtfy_bullet_point_collection_2": "",
+              "dbtfy_bullet_point_type_2": "",
+              "dbtfy_bullet_point_tag_2": "",
+              "dbtfy_bullet_point_product_2": "",
+              "dbtfy_bullet_point_text_3": "<p>Miljøvennlig<\/p>",
+              "dbtfy_bullet_point_icon_3": "check_circle",
+              "visibility_3": "all",
+              "dbtfy_bullet_point_collection_3": "",
+              "dbtfy_bullet_point_type_3": "",
+              "dbtfy_bullet_point_tag_3": "",
+              "dbtfy_bullet_point_product_3": "",
+              "dbtfy_bullet_point_text_4": "",
+              "dbtfy_bullet_point_icon_4": "check_circle",
+              "visibility_4": "all",
+              "dbtfy_bullet_point_collection_4": "",
+              "dbtfy_bullet_point_type_4": "",
+              "dbtfy_bullet_point_tag_4": "",
+              "dbtfy_bullet_point_product_4": "",
+              "dbtfy_bullet_point_text_5": "",
+              "dbtfy_bullet_point_icon_5": "check_circle",
+              "visibility_5": "all",
+              "dbtfy_bullet_point_collection_5": "",
+              "dbtfy_bullet_point_type_5": "",
+              "dbtfy_bullet_point_tag_5": "",
+              "dbtfy_bullet_point_product_5": "",
+              "dbtfy_bullet_point_text_6": "",
+              "dbtfy_bullet_point_icon_6": "check_circle",
+              "visibility_6": "all",
+              "dbtfy_bullet_point_collection_6": "",
+              "dbtfy_bullet_point_type_6": "",
+              "dbtfy_bullet_point_tag_6": "",
+              "dbtfy_bullet_point_product_6": "",
+              "dbtfy_bullet_point_text_7": "",
+              "dbtfy_bullet_point_icon_7": "check_circle",
+              "visibility_7": "all",
+              "dbtfy_bullet_point_collection_7": "",
+              "dbtfy_bullet_point_type_7": "",
+              "dbtfy_bullet_point_tag_7": "",
+              "dbtfy_bullet_point_product_7": "",
+              "dbtfy_bullet_point_text_8": "",
+              "dbtfy_bullet_point_icon_8": "check_circle",
+              "visibility_8": "all",
+              "dbtfy_bullet_point_collection_8": "",
+              "dbtfy_bullet_point_type_8": "",
+              "dbtfy_bullet_point_tag_8": "",
+              "dbtfy_bullet_point_product_8": "",
+              "dbtfy_bullet_point_text_9": "",
+              "dbtfy_bullet_point_icon_9": "check_circle",
+              "visibility_9": "all",
+              "dbtfy_bullet_point_collection_9": "",
+              "dbtfy_bullet_point_type_9": "",
+              "dbtfy_bullet_point_tag_9": "",
+              "dbtfy_bullet_point_product_9": "",
+              "dbtfy_bullet_point_text_10": "",
+              "dbtfy_bullet_point_icon_10": "check_circle",
+              "visibility_10": "all",
+              "dbtfy_bullet_point_collection_10": "",
+              "dbtfy_bullet_point_type_10": "",
+              "dbtfy_bullet_point_tag_10": "",
+              "dbtfy_bullet_point_product_10": ""
+            }
+          }
+        },
+        "block_order": [
+          "33b3cbe3-80e6-4919-92d4-f11ad9421b13"
+        ],
+        "settings": {
+          "dbtfy_bullet_points_position": "under-product-price",
+          "dbtfy_bullet_points_alignment": "left",
+          "dbtfy_bullet_points_display_type": "newline"
+        }
+      },
+      "dbtfy-cart-goal": {
+        "type": "dbtfy-cart-goal",
+        "settings": {
+          "dbtfy_cart_goal_before_text": "You're",
+          "dbtfy_cart_goal_amount": "70",
+          "dbtfy_cart_goal_after_text": "away from FREE shipping!",
+          "dbtfy_cart_goal_reached_text": "You are eligible for FREE shipping!",
+          "dbtfy_cart_goal_icons": "local_shipping"
+        }
+      },
+      "dbtfy-cart-upsell": {
+        "type": "dbtfy-cart-upsell",
+        "settings": {
+          "dbtfy_cart_upsell_button_style": "btn--primary"
+        }
+      },
+      "dbtfy-color-swatches": {
+        "type": "dbtfy-color-swatches",
+        "settings": {
+        }
+      },
+      "dbtfy-customizable-products": {
+        "type": "dbtfy-customizable-products",
+        "settings": {
+        }
+      },
+      "dbtfy-delivery-time": {
+        "type": "dbtfy-delivery-time",
+        "settings": {
+          "dbtfy_delivery_time_position": "under-addtocart-button"
+        }
+      },
+      "dbtfy-product-tabs": {
+        "type": "dbtfy-product-tabs",
+        "settings": {
+          "dbtfy_product_tabs_display_type": "vertical"
+        }
+      },
+      "dbtfy-product-swatches": {
+        "type": "dbtfy-product-swatches",
+        "settings": {
+          "dbtfy_product_swatches_show_in_grid": true
+        }
+      },
+      "dbtfy-quantity-breaks": {
+        "type": "dbtfy-quantity-breaks",
+        "settings": {
+          "dbtfy_quantity_breaks_single_text": "Buy _COUNT_: _PRICE_ _SAVED_AMOUNT_",
+          "dbtfy_quantity_breaks_price_type": "total_price",
+          "dbtfy_quantity_breaks_more_discount_text_before": "Add",
+          "dbtfy_quantity_breaks_more_discount_text_after": "more item to unlock",
+          "dbtfy_quantity_breaks_more_discount_text_after_percentage": "off",
+          "dbtfy_quantity_breaks_highest_discount_text": "Highest discount applied!"
+        }
+      },
+      "dbtfy-sales-countdown": {
+        "type": "dbtfy-sales-countdown",
+        "settings": {
+          "dbtfy_sales_countdown_icons": "local_fire_department",
+          "dbtfy_sales_countdown_prefix": "Sale ends in",
+          "dbtfy_sales_countdown_suffix": "",
+          "dbtfy_sales_countdown_d": "d",
+          "dbtfy_sales_countdown_h": "h",
+          "dbtfy_sales_countdown_m": "m",
+          "dbtfy_sales_countdown_s": "s"
+        }
+      },
+      "dbtfy-size-chart": {
+        "type": "dbtfy-size-chart",
+        "settings": {
+          "dbtfy_size_chart_icon": "straighten",
+          "dbtfy_size_chart_title": "Size chart",
+          "dbtfy_size_chart_width": "large"
+        }
+      },
+      "dbtfy-upsell-popup": {
+        "type": "dbtfy-upsell-popup",
+        "settings": {
+          "dbtfy_upsell_popup_width": "",
+          "dbtfy_upsell_popup_description": "See product details",
+          "dbtfy_upsell_popup_cart": "No thanks",
+          "dbtfy_upsell_popup_checkout": "Go to checkout →",
+          "text_alignment": "text-center",
+          "dbtfy_upsell_popup_range": 75
+        }
+      },
+      "drawer-menu": {
+        "type": "drawer-menu",
+        "settings": {
+          "drawer_link_toggle": true,
+          "email": true,
+          "phone": true,
+          "show_social_medias": true,
+          "hide_menu_icon": true,
+          "title": "Menu",
+          "drawer_top_link_list": "main-menu",
+          "drawer_bottom_link_list": "footer"
+        }
+      },
+      "announcement": {
+        "type": "announcement",
+        "blocks": {
+          "announcement-0": {
+            "type": "message",
+            "settings": {
+              "title": "",
+              "announcement_text": "<p><strong>Rask og gratis frakt | Betal senere med Klarna<\/strong><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "announcement-0"
+        ],
+        "settings": {
+          "show_announcement": true,
+          "small_announcement_text": true,
+          "show_social": false,
+          "email": false,
+          "phone": false,
+          "left_message": "",
+          "right_message": "",
+          "announcement_autoplayspeed": 5
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "main_menu_link_list": "main-menu",
+          "navigation_type": "center",
+          "logo_link": true,
+          "default_logo": "shopify:\/\/shop_images\/natural_fab.png",
+          "default_logo_svg": "",
+          "inverted_logo_svg": "",
+          "mobile_logo_svg": "",
+          "logo_width": 200,
+          "logo_mobile_width": 150
+        }
+      },
+      "dbtfy-instagram-feed": {
+        "type": "dbtfy-instagram-feed",
+        "settings": {
+          "dbtfy_instagram_feed_icon": false,
+          "dbtfy_instagram_feed_access_token": "",
+          "dbtfy_instagram_feed_full_width": false,
+          "title": "From our Instagram",
+          "subtitle": "",
+          "dbtfy_instagram_feed_section_style": "section-border",
+          "dbtfy_instagram_feed_rows": "1",
+          "dbtfy_instagram_feed_desktop_grid": "6",
+          "dbtfy_instagram_feed_mobile_grid": "3"
+        }
+      },
+      "guarantee": {
+        "type": "guarantee",
+        "blocks": {
+          "guarantee-0": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "guarantee_icon": "contact_support",
+              "heading_text": "24\/7 KUNDESERVICE",
+              "text": "<p>Fyll ut kontaktskjemaet for alle dine spørsmål, så kommer vi tilbake til deg innen 24 timer!<\/p>",
+              "button_style": "btn-outline-primary",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "guarantee-1": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "guarantee_icon": "local_shipping",
+              "heading_text": "GRATIS LEVERING",
+              "text": "<p>KjaerlighetsLiv gjør sitt ytterste for å levere raskt og tilbyr gratis frakt<\/p>",
+              "button_style": "btn-outline-primary",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "guarantee-2": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "guarantee_icon": "credit_card",
+              "heading_text": "SIKRE BETALINGER",
+              "text": "<p>Bruk mange forskjellige betalingsalternativer som Klarna, Visa, Mastercard og AMEX!<\/p>",
+              "button_style": "btn-outline-primary",
+              "button_label": "",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "guarantee-0",
+          "guarantee-1",
+          "guarantee-2"
+        ],
+        "settings": {
+          "show_guarantee": true,
+          "guarantee_size": "xl",
+          "section_style": "section-border"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "column_width": 2,
+              "svg": "",
+              "img_url": "",
+              "logo_width": 150,
+              "heading_text": "Kontakt",
+              "subtitle": "",
+              "text": "",
+              "email": true,
+              "phone": false,
+              "show_social_media": false
+            }
+          },
+          "footer-1": {
+            "type": "link_list",
+            "settings": {
+              "title": "",
+              "column_width": 1,
+              "heading_text": "Kundeinformasjon",
+              "subtitle": "",
+              "footer_link_list": "footer"
+            }
+          },
+          "7e892b4f-a169-4c15-b6b7-8158aac45d2b": {
+            "type": "newsletter",
+            "settings": {
+              "title": "",
+              "column_width": 2,
+              "heading_text": "Abonner på vårt nyhetsbrev",
+              "subtitle": "",
+              "customer_tag": "newsletter"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1",
+          "7e892b4f-a169-4c15-b6b7-8158aac45d2b"
+        ],
+        "settings": {
+          "show_social_media": false,
+          "social_media_position_desktop": "right",
+          "social_title": "Follow-us on social media!",
+          "show_payment_icons": true,
+          "show_shopify_footer": false,
+          "show_debutify_footer": false,
+          "custom_credential": ""
+        }
+      },
+      "dbtfy-collection-filters": {
+        "type": "dbtfy-collection-filters",
+        "settings": {
+          "clear_label": "Clear",
+          "clear_all_label": "Clear All",
+          "hide_unavailable_options": false,
+          "visibility_tags_count": "none"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}

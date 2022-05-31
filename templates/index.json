@@ -1,1 +1,109 @@
-{"sections":{"1648159423c87097a7":{"type":"hero","blocks":{"36f04a3e-9ac6-440b-8985-91107f39945a":{"type":"slide","settings":{"title":"","overlay":false,"image":"shopify:\/\/shop_images\/cover.png","image_position":"center center","image_position_mobile":"center center","slide_link":"","video":"","heading_text":"","text":"","text_position":"align-center","text_position_mobile":"align-center","text_alignment":"text-center","text_alignment_mobile":"text-center","enable_custom_fonts":false,"slideshow_family":"poppins_n4","button_label":"","button_link":"shopify:\/\/collections\/all","button_style":"btn--primary","button_label_2":"","button_link_2":"shopify:\/\/collections\/all","button_style_2":""}}},"block_order":["36f04a3e-9ac6-440b-8985-91107f39945a"],"settings":{"show_on_desktop":true,"show_on_mobile":true,"section_height":"xlarge","section_height_mobile":"xsmall","arrows":true,"dots":true,"autoplay":false,"autoplayspeed":8}},"16481613208b371a1a":{"type":"featured-products","settings":{"show_on_desktop":true,"show_on_mobile":true,"title":"Trender denne uken:","subtitle":"","section_style":"section-blank","home_featured_products":"feautured","rows":"2","desktop_grid":"4","mobile_grid":"2","show_view_all":false,"button_label":"Se alt","button_link":"","button_style":"btn-outline-primary","slider_related_products":true,"arrows":true,"dots":true,"autoplay":false,"autoplayspeed":5}},"16484820271528fa96":{"type":"featured-product","settings":{"show_on_desktop":true,"show_on_mobile":true,"featured_product":"hester-sprenger","section_style":"section-blank","show_product_vendor":false,"show_product_type":true,"show_product_sku":false,"product_title_large":false,"show_product_tags":false,"show_sharing_icons":true,"show_product_collections":false,"show_full_details":true,"enable_fading_effect":true,"enable_image_zoom_on_icon_click":false,"image_display_type":"image_zoom","enable_video_looping":false,"media_layout":"thumbnails","image_size":"medium","enable_arrows":true,"thumbnails_position":"bottom_center","quantity_enabled":false,"product_selector":"radio","show_product_description":false,"description_full":false,"dbtfy_product_description_position":"separate_section","description_style":"section-border","text_alignment":"text-center","text_alignment_mobile":"small--text-center"}}},"order":["1648159423c87097a7","16481613208b371a1a","16484820271528fa96"]}
+{
+  "sections": {
+    "1648159423c87097a7": {
+      "type": "hero",
+      "blocks": {
+        "36f04a3e-9ac6-440b-8985-91107f39945a": {
+          "type": "slide",
+          "settings": {
+            "title": "",
+            "overlay": false,
+            "image": "shopify:\/\/shop_images\/brushes-blossoms.jpg",
+            "image_position": "center center",
+            "image_position_mobile": "center center",
+            "slide_link": "",
+            "video": "",
+            "heading_text": "WELCOME",
+            "text": "",
+            "text_position": "align-center",
+            "text_position_mobile": "align-center",
+            "text_alignment": "text-center",
+            "text_alignment_mobile": "text-center",
+            "enable_custom_fonts": false,
+            "slideshow_family": "poppins_n4",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify:\/\/collections\/all",
+            "button_style": "btn--primary",
+            "button_label_2": "",
+            "button_link_2": "shopify:\/\/collections\/all",
+            "button_style_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "36f04a3e-9ac6-440b-8985-91107f39945a"
+      ],
+      "settings": {
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "section_height": "xlarge",
+        "section_height_mobile": "xsmall",
+        "arrows": true,
+        "dots": true,
+        "autoplay": false,
+        "autoplayspeed": 8
+      }
+    },
+    "16481613208b371a1a": {
+      "type": "featured-products",
+      "settings": {
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "title": "Trender denne uken:",
+        "subtitle": "",
+        "section_style": "section-blank",
+        "home_featured_products": "featured",
+        "rows": "2",
+        "desktop_grid": "4",
+        "mobile_grid": "2",
+        "show_view_all": false,
+        "button_label": "Se alt",
+        "button_link": "",
+        "button_style": "btn-outline-primary",
+        "slider_related_products": true,
+        "arrows": true,
+        "dots": true,
+        "autoplay": false,
+        "autoplayspeed": 5
+      }
+    },
+    "16484820271528fa96": {
+      "type": "featured-product",
+      "settings": {
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "featured_product": "test-product",
+        "section_style": "section-blank",
+        "show_product_vendor": false,
+        "show_product_type": true,
+        "show_product_sku": false,
+        "product_title_large": false,
+        "show_product_tags": false,
+        "show_sharing_icons": true,
+        "show_product_collections": false,
+        "show_full_details": true,
+        "enable_fading_effect": true,
+        "enable_image_zoom_on_icon_click": false,
+        "image_display_type": "image_zoom",
+        "enable_video_looping": false,
+        "media_layout": "thumbnails",
+        "image_size": "medium",
+        "enable_arrows": true,
+        "thumbnails_position": "bottom_center",
+        "quantity_enabled": false,
+        "product_selector": "radio",
+        "show_product_description": false,
+        "description_full": false,
+        "dbtfy_product_description_position": "separate_section",
+        "description_style": "section-border",
+        "text_alignment": "text-center",
+        "text_alignment_mobile": "small--text-center"
+      }
+    }
+  },
+  "order": [
+    "1648159423c87097a7",
+    "16481613208b371a1a",
+    "16484820271528fa96"
+  ]
+}
