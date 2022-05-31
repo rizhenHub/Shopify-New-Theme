@@ -72,7 +72,6 @@
     </button>
   {%- endif -%}
 {%- endcapture -%}
-
 <div class="grid__item {{ grid_item_width }} flex flex-fill {% if block %}collection-{{ block.id }}{% endif %}"
   {% if block %}{{ block.shopify_attributes }}{% endif %}>
   <a href="{{ collection_link }}" class="image-link flex full {% if settings.collection_grid_animation %}collection_grid-animation{% endif %} {% if settings.collection_grid_card %}card{% endif %}">

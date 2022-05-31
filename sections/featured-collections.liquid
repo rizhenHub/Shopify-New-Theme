@@ -26,6 +26,7 @@
   data-section-id="{{ section.id }}"
   data-section-type="list-collections-template"
 >
+  
   <div class="box">
     <div class="{% if full_width %}wrapper-full{% else %}wrapper{% endif %}">
       {%- unless no_header -%}
@@ -33,7 +34,7 @@
           <div class="grid__item large--eight-twelfths push--large--two-twelfths">
             <div class="section-header">
               {%- unless section.settings.title == blank -%}
-                <h2 class="section-header__title">{{ section.settings.title | escape }}</h2>
+                <h2 class="section-header__title">{{ section.settings.title | escape }} </h2>
               {%- endunless -%}
 
               {%- unless section.settings.subtitle == blank -%}

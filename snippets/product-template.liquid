@@ -348,11 +348,32 @@
                   <span class="money">{{ price | money }}</span>
                 </span>
 
-                <span id="ComparePrice"
+                <div>
+                  <span id="ComparePrice"
                   class="product-single__price--compare-at text-muted text-strike{% unless on_sale %} hide{% endunless %}"
                   aria-label="{{ 'products.general.regular_price' | t }}">
                   <span class="money">{{ compare_at_price | money }}</span>
-                </span>
+                  </span>
+
+                  <span class="badge grid-product__badge" style="margin-left:.5rem;">
+                    <span class="material-icons-outlined">local_offer</span>
+                    <span class="product-badge-text">
+                      {%- liquid 
+                         assign cur_price = price | divided_by: 100.00
+                         assign comp_price = compare_at_price | divided_by: 100.00
+                         assign divide_price = cur_price | divided_by: comp_price
+                         assign save_price = divide_price | times: 100
+                         
+
+                      -%}
+                      SAVE <span class="product-badge-discount">{{ save_price | round }}%</span>
+                      
+                    </span>
+                  </span>
+                </div>
+                
+
+                
 
                 {%- render "dbtfy-discount-saved" with product as product -%}
 
