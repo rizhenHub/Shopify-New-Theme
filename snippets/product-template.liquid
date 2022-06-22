@@ -808,7 +808,7 @@
                 -%}
 
                 {%- if image != blank -%}
-                  <img class="image-link image-sticky_addtocart lazyload image-sticky_addtocart-{{ first_variant.id }}" data-src="{{ image | img_url: "65x65", crop: "center" }}">
+                  <img id="sticky_img" class="image-link image-sticky_addtocart lazyload image-sticky_addtocart-{{ first_variant.id }}" data-src="{{ image | img_url: "65x65", crop: "center" }}" style="width:65px; height:65px; object-fit:cover;">
                 {%- else -%}
                   {{ "product-1" | placeholder_svg_tag: 'placeholder-svg' }}
                 {% endif %}
@@ -914,7 +914,9 @@
         {%- endform -%}
       </div>
     </div>
-  </div>
+</div>
+
+
 
 <script type="application/json" id="ProductJson-{{ section.id }}" class="mainProductJson">
 {
@@ -960,85 +962,64 @@
 </script>
 
 <script>
-  // async function getProdInfo() {
-  //   const samp = {{ product.url | append: '.js' | json }};
-  //   const prod_url =  JSON.stringify(samp).slice(2,-1);
-  //   const res = await fetch (window.Shopify.routes.root + prod_url );
-  //   const profile = await res.json();
-  //   console.log(profile);
-  //   const show = ({{ product.selected_or_first_available_variant | json }});
-  //   console.log(show);
-  // }
+  async function getProdInfo() {
+     const samp = {{ product.url | append: '.js' | json }};
+     const prod_url =  JSON.stringify(samp).slice(2,-1);
+     const res = await fetch (window.Shopify.routes.root + prod_url );
+     const profile = await res.json();
+    //  console.log(profile);
+    //  const show = ({{ product.selected_or_first_available_variant | json }});
+    //  console.log(show);
+    // console.log(profile.variants);
+    const var_length = profile.variants.length;
+    
 
-  // getProdInfo();
-  
-  // const info = document.getElementsByTagName('select');
-  // const info2 = info[1].children;
-  // const info3 = info[0].children;
-  // console.log(info2);
-  // const childCount = info2.length;
-  // for(let i = 0; i<childCount; i++){
-  //   if(info2[i].selected == true){
-  //     console.log(info2[i]);
-  //   }
-  // }
+    const tag = document.getElementsByTagName('fieldset');
+    const tag2 = document.getElementById('sticky-select');
 
-  // info[0].addEventListener('change',
-  //   function(e) {
-  //     for(let i = 0; i<childCount; i++){
-  //       if(info3[i].selected == true){
-  //         console.log(info3[i].text);
-  //         document.getElementById('changeMe').innerText = info3[i].text;
-  //       }
-  //     }
-  //   }
-  // )
+    const selectID = {{ product.id | json}}
 
-  // const field_Children = document.getElementsByClassName('single-option-selector__radio js-single-option-selector');
-  // console.log(field_Children);
-  
-  // document.getElementsByTagName('input')[1].addEventListener('change',
-  //   function(e) {
-  //     console.log('changed');
-  //   }
-  // )
-  const tag = document.getElementsByTagName('fieldset');
-  const tag2 = document.getElementById('sticky-select');
+    for(let i = 0; i<tag.length; i++) {
+      tag[i].addEventListener('change',
+        function(e) {
+          const selected = ($('#MainProductSelect-'+JSON.stringify(selectID)).val());
+          const select = document.getElementById('sticky-select');
+          select.value = selected;
+          for(let a = 0; a<var_length; a++)
+          {
+            if(profile.variants[a].id == parseInt(selected)){
+              document.getElementById('sticky_img').setAttribute('src', profile.variants[a].featured_image.src);
+            }
+          } 
+        }
+      )
+    }
 
-  const selectID = {{ product.id | json}}
-
-  for(let i = 0; i<tag.length; i++) {
-    tag[i].addEventListener('change',
+    tag2.addEventListener('change',
       function(e) {
-        const selected = ($('#MainProductSelect-'+JSON.stringify(selectID)).val());
-        const select = document.getElementById('sticky-select');
-        select.value = selected;
-        
-      }
-    )
-  }
-
-  tag2.addEventListener('change',
-    function(e) {
-        const variant_id = document.getElementById('sticky-select');
-        const variant_id_child = variant_id.children;
-        for(let i = 0; i<variant_id_child.length; i++){
-          let selected_checker = false;
-          if(variant_id_child[i].getAttribute('value') == variant_id.value ) {
-            const data_option_size = variant_id_child[i].getAttribute('data-option-size');
-            for(let y = 0; y<data_option_size; y++){
-              const oprion_value = variant_id_child[i].getAttribute('data-option-'+(y+1));
-              const counter = document.getElementsByClassName('single-option-selector__radio js-single-option-selector').length;
-              for(let z = 0; z<counter; z++){
-                if(document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].getAttribute('value') == oprion_value ){
-                  document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].checked = true;
-                }
-              } 
+          const variant_id = document.getElementById('sticky-select');
+          const variant_id_child = variant_id.children;
+          for(let i = 0; i<variant_id_child.length; i++){
+            let selected_checker = false;
+            if(variant_id_child[i].getAttribute('value') == variant_id.value ) {
+              const data_option_size = variant_id_child[i].getAttribute('data-option-size');
+              for(let y = 0; y<data_option_size; y++){
+                const oprion_value = variant_id_child[i].getAttribute('data-option-'+(y+1));
+                const counter = document.getElementsByClassName('single-option-selector__radio js-single-option-selector').length;
+                for(let z = 0; z<counter; z++){
+                  if(document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].getAttribute('value') == oprion_value ){
+                    document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].checked = true;
+                  }
+                } 
+              }
+              document.getElementById('sticky_img').setAttribute('src', profile.variants[i].featured_image.src);
             }
           }
-        }
-    }
-  )
+      }
+    ) 
+  }
+  getProdInfo();
+
 
 </script>
 
