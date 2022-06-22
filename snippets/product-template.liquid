@@ -367,7 +367,7 @@
                          assign save_price2 = 100 | minus: save_price1
 
                       -%}
-                      SAVE <span class="product-badge-discount">{{ save_price2 | round }}%</span>
+                      SAVE <span id="getme" class="product-badge-discount">{{ save_price2 | round }}%</span>
                       
                     </span>
                   </span>
@@ -778,7 +778,7 @@
 {%- unless emptyState -%}
 
 
-
+<!-- 
 <div id="stickyAddToCart" class="{{ settings.dbtfy_sticky_addtocart_position }}-sticky_addtocart prevent-scrollbar-shift stacked-on-top-of-content">
   <div class="wrapper">
     {%- form 'product', product -%}
@@ -911,7 +911,7 @@
       </div>
     {%- endform -%}
   </div>
-</div>
+</div> -->
 
 <br>
 <div class="wrapper">
@@ -940,7 +940,7 @@
           -%}
 
           {%- if image != blank -%}
-            <img id="sticky_img" class="image-link image-sticky_addtocart lazyload image-sticky_addtocart-{{ first_variant.id }}" data-src="{{ image | img_url: "65x65", crop: "center" }}" style="min-width:65px; min-height:65px; object-fit:cover;">
+            <img id="sticky_img" class="image-link image-sticky_addtocart lazyload image-sticky_addtocart-{{ first_variant.id }}" data-src="{{ image | img_url: "65x65", crop: "center" }}" style="width:65px; height:65px; object-fit:cover; min-width: 65px; min-height: 65px;">
           {%- else -%}
             {{ "product-1" | placeholder_svg_tag: 'placeholder-svg' }}
           {% endif %}
@@ -950,17 +950,18 @@
         <h5 class="title-sticky_addtocart text-ellipsis">{{ product.title }}</h5>
         <div class="dbtfy-sticky-price-box text-money flex_price align-center small--align-bottom" data-discount-saved='{{ settings.dbtfy_discount_saved }}'>
           <span class="total-sticky-price{% if settings.dbtfy_sticky_addtocart_position == 'top' and settings.dbtfy_custom_currencies %} tooltip-position-bottom{% endif %}">
-            <span class="money" style="color:#d40000;">{{ price | money }}</span>
+            <span id="sticky_price" class="money" style="color:#d40000;">{{ price | money }}</span>
           </span>
 
           <span class="total-sticky-compare-price text-money text-muted text-strike{% if settings.dbtfy_sticky_addtocart_position == 'top' and settings.dbtfy_custom_currencies %} tooltip-position-bottom{% endif %}">
-            <span class="money">{{ compare_at_price | money }}</span>
+            <span id="sticky_compare_price" class="money">{{ compare_at_price | money }}</span>
           </span>
 
           {%- if settings.dbtfy_discount_saved -%}
             <span class="discount-sticky-price badge small--hide" data-discount-variant="{{ settings.sale_type }}">
               <span class="{{ settings.icon }}">local_offer</span>
-              <span class="discount-sticky-price-text{% if settings.dbtfy_sticky_addtocart_position == 'top' and settings.dbtfy_custom_currencies %} tooltip-position-bottom{% endif %}">LAGRE 50%</span>
+              <span>SAVE</span>
+              <span id="sticky_save" class="discount-sticky-price-text{% if settings.dbtfy_sticky_addtocart_position == 'top' and settings.dbtfy_custom_currencies %} tooltip-position-bottom{% endif %}"> {{ save_price2 | round }}%</span>
             </span>
           {%- endif -%}
         </div>
@@ -1051,8 +1052,11 @@
   .sticky_right{
     margin-left: auto;
   }
-  .flex_atc > * {
-
+  @media (max-width: 768px) { 
+    .sticky_right{
+      margin-left: 0;
+      flex-grow: 1;
+    }
   }
 </style>
 
@@ -1105,7 +1109,7 @@
      const prod_url =  JSON.stringify(samp).slice(2,-1);
      const res = await fetch (window.Shopify.routes.root + prod_url );
      const profile = await res.json();
-    //  console.log(profile);
+     console.log(profile);
     //  const show = ({{ product.selected_or_first_available_variant | json }});
     //  console.log(show);
     // console.log(profile.variants);
@@ -1127,6 +1131,16 @@
           {
             if(profile.variants[a].id == parseInt(selected)){
               document.getElementById('sticky_img').setAttribute('src', profile.variants[a].featured_image.src);
+              const main_price = document.getElementById('ProductPrice').textContent;
+              const main_compare_price = document.getElementById('ComparePrice').textContent;
+              document.getElementById('sticky_price').textContent = main_price;
+              document.getElementById('sticky_compare_price').textContent = main_compare_price;
+              const var_price = profile.variants[a].price;
+              const var_comp_price = profile.variants[a].compare_at_price;
+              const result_price = (var_price/var_comp_price)*100;
+              const final_result_price = 100 - result_price;
+              document.getElementById('getme').textContent = final_result_price + '%';
+              document.getElementById('sticky_save').textContent = final_result_price +'%';
             }
           } 
         }
