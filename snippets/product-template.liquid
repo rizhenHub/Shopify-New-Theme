@@ -915,6 +915,7 @@
     min-height: 65px;
   }
   .sticky_atc {
+    display:none;
     position:fixed;
     bottom:0;
     left: 0;
@@ -1087,22 +1088,24 @@
     ) 
   }
   getProdInfo();
-
-  $(document).ready(function () {
-  	
-    const heroHeader = document.querySelector('.section-description');
-  	const moveBtn = (e) => {
-  		const heroBtn = document.querySelector('.sticky_atc');
-        if(!e[0].isIntersecting){
-          $('.sticky_atc').hide();
-        }
-        if(e[0].isIntersecting){
-          $('.sticky_atc').show();
-        }
-    }
-    const moveBtnIntersectionObs = new IntersectionObserver(moveBtn);
-  	moveBtnIntersectionObs.observe(heroHeader);
-  });
+  {% if request.page_type == 'product' %}
+    $(document).ready(function () {
+      
+      const heroHeader = document.querySelector('.section-description');
+      const moveBtn = (e) => {
+        const heroBtn = document.querySelector('.sticky_atc');
+          if(!e[0].isIntersecting){
+            $('.sticky_atc').hide();
+          }
+          if(e[0].isIntersecting){
+            $('.sticky_atc').show();
+          }
+      }
+      const moveBtnIntersectionObs = new IntersectionObserver(moveBtn);
+      moveBtnIntersectionObs.observe(heroHeader);
+    });
+  {% endif %}
+  
 
 </script>
 
