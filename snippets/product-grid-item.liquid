@@ -284,46 +284,47 @@
       }
     </script>
   {%- endif -%}
+
+  <script>
+    $(document).ready(function() {
+      
+      function switchDisplay(){
+        setTimeout(() => {
+          document.getElementById('btn_select-{{product.id}}').style.display="none";
+          document.getElementById('collection_select-{{product.id}}').style.display="block";
+        }, 1000);
+      }
+   
+      function changeSelect() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.getElementById('collection_select-{{product.id}}').onchange = function() {
+            const defaultSelected = document.getElementById('collection_select-{{product.id}}').children;
+            document.getElementById('btn_select-{{product.id}}').click();
+            document.getElementById('btn_select-{{product.id}}').style.display="block";
+            defaultSelected[0].selected = 'selected';
+            document.getElementById('collection_select-{{product.id}}').style.display="none";
+            const error = false;
+            if(!error){
+                    resolve();
+                }
+                else{
+                    reject('Error: Something went wrong!')
+                }
+            }
+          }, 2000);
+        })
+        
+      }
+      async function init(){
+        await changeSelect();
+        switchDisplay();
+      }
+      init();
+      
+  
+    });
+    
+  </script>
 </div>
 
-<script>
-  $(document).ready(function() {
-    
-    function switchDisplay(){
-      setTimeout(() => {
-        document.getElementById('btn_select-{{product.id}}').style.display="none";
-        document.getElementById('collection_select-{{product.id}}').style.display="block";
-      }, 1000);
-    }
- 
-    function changeSelect() {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          document.getElementById('collection_select-{{product.id}}').onchange = function() {
-          const defaultSelected = document.getElementById('collection_select-{{product.id}}').children;
-          document.getElementById('btn_select-{{product.id}}').click();
-          document.getElementById('btn_select-{{product.id}}').style.display="block";
-          defaultSelected[0].selected = 'selected';
-          document.getElementById('collection_select-{{product.id}}').style.display="none";
-          const error = false;
-          if(!error){
-                  resolve();
-              }
-              else{
-                  reject('Error: Something went wrong!')
-              }
-          }
-        }, 2000);
-      })
-      
-    }
-    async function init(){
-      await changeSelect();
-      switchDisplay();
-    }
-    init();
-    
-
-  });
-  
-</script>
