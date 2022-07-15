@@ -20,7 +20,7 @@
             The page content is in progress. Please check again shortly. Thank you!
             {%- for collection in collections -%}
              {% if collection.title == "Featured" %}
-               {{ collection.handle }}
+              <p>{{ collection.handle }}</p> 
              {% endif %}
            {%- endfor -%}
           </div>
