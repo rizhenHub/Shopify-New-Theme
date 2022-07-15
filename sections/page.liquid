@@ -8,11 +8,15 @@
           </div>
         </div>
 
-        {%- unless page.content == blank -%}
+        {%- if page.content != blank -%}
           <div class="page-content rte">
             {{ page.content }}
           </div>
-        {%- endunless -%}
+        {%- else -%}
+          <div class="page-content rte">
+            The page content is in progress. Please check again shortly.     
+          </div>
+        {%- endif -%}
       </div>
     </div>
   </div>
