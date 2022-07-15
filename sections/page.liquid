@@ -11,7 +11,7 @@
         {%- if page.content != blank -%}
           <div class="page-content rte">
             {{ page.content }}
-          {%- for product in collections.feautured.products -%}
+          {%- for product in collections["feautured"].products -%}
            <p>{{- product.title -}}</p>
          {%- endfor -%}
           </div>
