@@ -24,7 +24,7 @@
                {% for product in collections[handle].products %}
                   <p>{{ product.title }}</p>
                {% endfor %}
-              
+               {% break %}
              {% endif %}
            {%- endfor -%}
           </div>
