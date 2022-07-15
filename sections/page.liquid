@@ -20,8 +20,8 @@
             The page content is in progress. Please check again shortly. Thank you!
             {%- for collection in collections -%}
              {% if collection.title == "Featured" %}
-               {% assign handle = collection.handle %}
-               {% for product in collections["featured1"].products %}
+               {%- assign handle = collection.handle -%}
+               {% for product in collections["{{- handle -}}"].products %}
                   <p>{{ handle }}</p>
                {% endfor %}
               
