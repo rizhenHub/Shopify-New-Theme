@@ -12,14 +12,14 @@
           <div class="page-content rte">
             {{ page.content }}
           {%- for collection in collections -%}
-           <p>{{- collection.title -}}</p>
+           <p>{{- collection.handle -}}</p>
          {%- endfor -%}
           </div>
         {%- else -%}
           <div class="page-content rte">
             The page content is in progress. Please check again shortly. Thank you!
             {%- for collection in collections -%}
-             <p>{{- collection.title -}}</p>
+             <p>{{- collection.handle -}}</p>
            {%- endfor -%}
           </div>
         {%- endif -%}
