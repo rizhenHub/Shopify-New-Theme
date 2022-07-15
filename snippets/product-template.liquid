@@ -775,7 +775,8 @@
 {%- endif -%}
 
 {%- render "dbtfy-addtocart-animation" -%}
-<p>Sample</p>
+{% assign samp = "this is a sample text" %}
+<p>{{ samp.tag[0] }}</p>
 {%- unless emptyState -%}
 
 
