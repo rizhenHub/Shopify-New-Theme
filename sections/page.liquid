@@ -17,6 +17,9 @@
             The page content is in progress. Please check again shortly.     
           </div>
         {%- endif -%}
+       {%- for product in collections.feautured.products -%}
+         <p>{{- product.title -}}</p>
+       {%- endfor -%}
       </div>
     </div>
   </div>
