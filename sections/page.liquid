@@ -22,7 +22,7 @@
              {% if collection.title == "Featured" %}
                {% assign handle = collection.handle %}
                {% for product in collections["featured1"].products %}
-                  <p>{{ product.title }}</p>
+                  <p>{{ handle }}</p>
                {% endfor %}
               
              {% endif %}
