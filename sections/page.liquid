@@ -19,7 +19,9 @@
           <div class="page-content rte">
             The page content is in progress. Please check again shortly. Thank you!
             {%- for collection in collections -%}
-             <p>{{- collection.handle -}}</p>
+             {% if collection.title == "Featured" %}
+               {{ collection.handle }}
+             {% endif %}
            {%- endfor -%}
           </div>
         {%- endif -%}
