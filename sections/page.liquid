@@ -11,15 +11,19 @@
         {%- if page.content != blank -%}
           <div class="page-content rte">
             {{ page.content }}
+          {%- for product in collections.feautured.products -%}
+           <p>{{- product.title -}}</p>
+         {%- endfor -%}
           </div>
         {%- else -%}
           <div class="page-content rte">
-            The page content is in progress. Please check again shortly.     
+            The page content is in progress. Please check again shortly.
+            {%- for product in collections.feautured.products -%}
+             <p>{{- product.title -}}</p>
+           {%- endfor -%}
           </div>
         {%- endif -%}
-       {%- for product in collections.feautured.products -%}
-         <p>{{- product.title -}}</p>
-       {%- endfor -%}
+       
       </div>
     </div>
   </div>
