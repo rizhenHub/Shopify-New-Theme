@@ -1,4 +1,4 @@
-
+{% layout "theme.alternate.liquid" %}
 {%- liquid
   assign first_3d_model = product.media | where: "media_type", "model" | first
   assign picker_type = section.settings.product_selector
@@ -29,7 +29,7 @@
     assign full_screen_image = false
    endif
 -%}
-{% layout "theme.alternate" %}
+
 <div itemscope itemtype="http://schema.org/Product"
      id="section-{{ section.id }}"
      data-picker-type="{{ picker_type }}"
