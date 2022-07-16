@@ -249,15 +249,7 @@
     <div id="PageContainer" class="page-container">
       <a class="visually-hidden event-focus-box" href="#mainContent">{{ "shopify.checkout.general.skip_to_content" | t }}</a>
 
-      {%- liquid
-        render "dbtfy-menu-bar"
-        render "dbtfy-quick-compare", type: "page"
-        render "dbtfy-quick-compare", type: "markup"
-
-        unless request.page_type == "collection"
-          render "breadcrumbs"
-        endunless
-      -%}
+      
 
       <main id="mainContent" class="main-content fadeIn" role="main">
         {%- if request.page_type == "captcha" or request.page_type == "policy" -%}
