@@ -2,7 +2,7 @@
  {% if collection.title == "Featured" %}
    {%- assign handle = collection.handle -%}
    {% for product in collections[handle].products %}
-      <p>{{ product.title }}</p>
+     <a href = "{{ product.url }}"><p>{{ product.title }}</p></a>
    {% endfor %}
    {% break %}
  {% endif %}
