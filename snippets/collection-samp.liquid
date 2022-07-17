@@ -1,7 +1,9 @@
-{% if collection.title == "Featured" %}
- {%- assign handle = collection.handle -%}
- {% for product in collections[handle].products %}
-    <p>{{ product.title }}</p>
- {% endfor %}
- {% break %}
-{% endif %}
+{%- for collection in collections -%}
+ {% if collection.title == "Featured" %}
+   {%- assign handle = collection.handle -%}
+   {% for product in collections[handle].products %}
+      <p>{{ product.title }}</p>
+   {% endfor %}
+   {% break %}
+ {% endif %}
+{%- endfor -%}
