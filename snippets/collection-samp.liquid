@@ -1,11 +1,12 @@
-{% form "product", product %}
+
 {%- for collection in collections -%}
  {% if collection.title == "Featured" %}
    {%- assign handle = collection.handle -%}
    {% for product in collections[handle].products %}
      <a href = "{{ product.url }}"><p>{{ product.title }}</p></a>
+     {% form "product", product %}
+       {% endform %}
    {% endfor %}
    {% break %}
  {% endif %}
 {%- endfor -%}
-{% endform %}
