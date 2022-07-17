@@ -19,6 +19,7 @@
           <div class="page-content rte">
             The page content is in progress. Please check again shortly. Thank you!
             <input type="submi"t {% capture samp %}value="sample" {% endcapture %}>
+            <p>{{ samp }}</p>
             {% comment %}
             {%- for collection in collections -%}
              {% if collection.title == "Featured" %}
