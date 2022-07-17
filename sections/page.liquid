@@ -18,7 +18,7 @@
         {%- else -%}
           <div class="page-content rte">
             The page content is in progress. Please check again shortly. Thank you!
-            <input type="submi"t value="{%- capture samp -%}sample{%- endcapture -%}" >
+            <input type="submi"t value="{%- capture samp -%}sample{%- endcapture -%}" data-val="sample">
             <p>{{ samp }}</p>
             {% comment %}
             {%- for collection in collections -%}
