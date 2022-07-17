@@ -19,17 +19,9 @@
           <div class="page-content rte">
             The page content is in progress. Please check again shortly. Thank you!
 
-            {% comment %}
-            {%- for collection in collections -%}
-             {% if collection.title == "Featured" %}
-               {%- assign handle = collection.handle -%}
-               {% for product in collections[handle].products %}
-                  <p>{{ product.title }}</p>
-               {% endfor %}
-               {% break %}
-             {% endif %}
-           {%- endfor -%}
-          {% endcomment %}
+            
+          {% render "collection-samp" for collections as collection %}
+          
           </div>
         {%- endif -%}
        
