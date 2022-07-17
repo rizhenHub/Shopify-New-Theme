@@ -22,7 +22,7 @@
       {% if sub_sub_link.type == "product_link" %}
         <img src="{{ sub_sub_link.object | img_url:"250x250" }}"/>
       {% endif %}
-      <p>{{ sub_sub_link.title }} - {{ sub_sub_link.object.price }} - {{ sub_sub_link.object.compare_at_price }}</p>
+      <p>{{ sub_sub_link.title }} - {{ sub_sub_link.object.price | money }} - <span style="text-decoration: line-through; ">{{ sub_sub_link.object.compare_at_price | money}}</span></p>
     {% endfor %}
   {% endfor %}
 {% endfor %}
