@@ -1004,20 +1004,19 @@
 
 <script>
   async function getProdInfo() {
-     const samp = {{ product.url | append: '.js' | json }};
-     const prod_url =  JSON.stringify(samp).slice(2,-1);
-     const res = await fetch (window.Shopify.routes.root + prod_url );
-     const profile = await res.json();
-    //  const show = ({{ product.selected_or_first_available_variant | json }});
-    //  console.log(show);
+    const samp = {{ product.url | append: '.js' | json }};
+    const prod_url =  JSON.stringify(samp).slice(2,-1);
+    const res = await fetch (window.Shopify.routes.root + prod_url );
+    const profile = await res.json();
+    // const show = ({{ product.selected_or_first_available_variant | json }});
+    // console.log(show);
     // console.log(profile.variants);
     const var_length = profile.variants.length;
-    
 
     const tag = document.getElementsByTagName('fieldset');
     const tag2 = document.getElementById('sticky-select');
 
-    const selectID = {{ product.id | json}}
+    const selectID = {{ product.id | json}};
 
     for(let i = 0; i<tag.length; i++) {
       tag[i].addEventListener('change',
@@ -1025,67 +1024,71 @@
           const selected = ($('#MainProductSelect-'+JSON.stringify(selectID)).val());
           const select = document.getElementById('sticky-select');
           select.value = selected;
-          for(let a = 0; a<var_length; a++)
-          {
+          for(let a = 0; a<var_length; a++){
             if(profile.variants[a].id == parseInt(selected)){
-              document.getElementById('sticky_img').setAttribute('src', profile.variants[a].featured_image.src);
+              if(profile.variants[a].featured_image != null){
+                document.getElementById('sticky_img').setAttribute('src', profile.variants[a].featured_image.src);
+              }
               const main_price = document.getElementById('ProductPrice').textContent;
               const main_compare_price = document.getElementById('ComparePrice').textContent;
               document.getElementById('sticky_price').textContent = main_price;
               document.getElementById('sticky_compare_price').textContent = main_compare_price;
               const var_price = profile.variants[a].price;
               const var_comp_price = profile.variants[a].compare_at_price;
-              const result_price = (var_price/var_comp_price)*100;
+              const result_price = Math.round((var_price/var_comp_price)*100);
               const final_result_price = 100 - result_price;
               document.getElementById('getme').textContent = final_result_price + '%';
               document.getElementById('sticky_save').textContent = final_result_price +'%';
             }
-          } 
+          }
         }
       )
     }
-
+  
     tag2.addEventListener('change',
       function(e) {
-          const variant_id = document.getElementById('sticky-select');
-          const variant_id_child = variant_id.children;
-          for(let i = 0; i<variant_id_child.length; i++){
-            let selected_checker = false;
-            if(variant_id_child[i].getAttribute('value') == variant_id.value ) {
-              const data_option_size = variant_id_child[i].getAttribute('data-option-size');
-              for(let y = 0; y<data_option_size; y++){
-                const oprion_value = variant_id_child[i].getAttribute('data-option-'+(y+1));
-                const counter = document.getElementsByClassName('single-option-selector__radio js-single-option-selector').length;
-                for(let z = 0; z<counter; z++){
-                  if(document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].getAttribute('value') == oprion_value ){
-                    document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].checked = true;
-                  }
-                } 
-              }
-              document.getElementById('sticky_img').setAttribute('src', profile.variants[i].featured_image.src);
-              const mainSelect = document.getElementById('MainProductSelect-{{ product.id }}');
-              for(let b = 0; b<variant_id_child.length; b++){
-                mainSelect.children[b].removeAttribute("selected");
-                if(mainSelect.children[b].value == variant_id.value){
-                  mainSelect.children[b].setAttribute('selected', 'selected');
-                  const main_var_price = mainSelect.children[b];
-                  document.getElementById('sticky_price').textContent = main_var_price.getAttribute('varprice');
-                  const main_var_compare_price = mainSelect.children[b];
-                  document.getElementById('sticky_compare_price').textContent = main_var_price.getAttribute('varcompprice');
-                  document.getElementById('ProductPrice').textContent =  main_var_price.getAttribute('varprice');
-                  document.getElementById('ComparePrice').textContent =  main_var_price.getAttribute('varcompprice');
-                  const var_price2 = profile.variants[b].price;
-                  const var_comp_price2 = profile.variants[b].compare_at_price;
-                  const result_price2 = (var_price2/var_comp_price2)*100;
-                  const final_result_price2 = 100 - result_price2;
-                  document.getElementById('getme').textContent = final_result_price2 + '%';
-                  document.getElementById('sticky_save').textContent = final_result_price2 +'%';
+        const variant_id = document.getElementById('sticky-select');
+        const variant_id_child = variant_id.children;
+        for(let i = 0; i<variant_id_child.length; i++){
+          let selected_checker = false;
+          if(variant_id_child[i].getAttribute('value') == variant_id.value ) {
+            const data_option_size = variant_id_child[i].getAttribute('data-option-size');
+            for(let y = 0; y<data_option_size; y++){
+              const oprion_value = variant_id_child[i].getAttribute('data-option-'+(y+1));
+              const counter = document.getElementsByClassName('single-option-selector__radio js-single-option-selector').length;
+              for(let z = 0; z<counter; z++){
+                if(document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].getAttribute('value') == oprion_value ){
+                  document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].checked = true;
                 }
-              }            
+              } 
             }
+            if(profile.variants[i].featured_image != null)
+            {
+              document.getElementById('sticky_img').setAttribute('src', profile.variants[i].featured_image.src);
+            }
+            const mainSelect = document.getElementById('MainProductSelect-{{ product.id }}');
+            for(let b = 0; b<variant_id_child.length; b++){
+              mainSelect.children[b].removeAttribute("selected");
+              if(mainSelect.children[b].value == variant_id.value){
+                mainSelect.children[b].setAttribute('selected', 'selected');
+                const main_var_price = mainSelect.children[b];
+                document.getElementById('sticky_price').textContent = main_var_price.getAttribute('varprice');
+                const main_var_compare_price = mainSelect.children[b];
+                document.getElementById('sticky_compare_price').textContent = main_var_price.getAttribute('varcompprice');
+                document.getElementById('ProductPrice').textContent =  main_var_price.getAttribute('varprice');
+                document.getElementById('ComparePrice').textContent =  main_var_price.getAttribute('varcompprice');
+                const var_price2 = profile.variants[b].price;
+                const var_comp_price2 = profile.variants[b].compare_at_price;
+                const result_price2 = Math.round((var_price2/var_comp_price2)*100);
+                const final_result_price2 = 100 - result_price2;
+                document.getElementById('getme').textContent = final_result_price2 + '%';
+                document.getElementById('sticky_save').textContent = final_result_price2 +'%';
+              }
+            }            
           }
+        }
       }
-    ) 
+    )
   }
   getProdInfo();
   {% if request.page_type == 'product' %}
