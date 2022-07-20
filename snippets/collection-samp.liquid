@@ -26,3 +26,9 @@
     {% endfor %}
   {% endfor %}
 {% endfor %}
+
+{% if settings.enable_popup == true %}
+   <p>pop-up enabled</p>
+{% else %}
+  <p>pop-up disabled</p>
+{% endif %}
