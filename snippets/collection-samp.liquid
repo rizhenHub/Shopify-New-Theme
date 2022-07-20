@@ -34,5 +34,5 @@
 {% endif %}
 
 {% for product in settings.featured_collection.products %}
-  <p>{{ product.title }}</p>
+  <p>{{ product.title }} - {{ product.price | money }}</p>
 {% endfor %}
