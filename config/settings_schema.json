@@ -3507,7 +3507,7 @@
         "default": "newsletter",
         "info": "t:settings_schema.newsletter_popup.settings.customer_tag.info"
       },
-	    {
+      {
         "type": "paragraph",
         "content": "t:settings_schema.newsletter_popup.settings.paragraph__4.content"
       },
@@ -4525,6 +4525,23 @@
         "id": "dbtfy_wish_list_page",
         "label": "t:settings_schema.wishlist.settings.wishlist_page.label",
         "info": "t:settings_schema.wishlist.settings.wishlist_page.info"
+      }
+    ]
+  },
+  {
+    "name": "Sample",
+    "settings": [
+      {
+        "type": "color",
+        "id": "sample_color",
+        "label": "Sample Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border Color",
+        "default": "#000"
       }
     ]
   }
