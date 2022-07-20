@@ -4554,6 +4554,11 @@
         "id": "header-menu",
         "label": "Header Menu",
         "default": "main-menu"
+      },
+      {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Featured Collection"
       }
     ]
   }
