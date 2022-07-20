@@ -4548,6 +4548,12 @@
         "id": "enable_popup",
         "label": "Enable popup",
         "default": true
+      },
+      {
+        "type": "link_list",
+        "id": "header-menu",
+        "label": "Header Menu",
+        "default": "main-menu"
       }
     ]
   }
