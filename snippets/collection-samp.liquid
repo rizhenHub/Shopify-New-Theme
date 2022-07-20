@@ -33,5 +33,6 @@
   <p>pop-up disabled</p>
 {% endif %}
 {% assign collection-menu = settings.header-menu %}
-  {% for link in collection-menu.links %}
+{% for link in collection-menu.links %}
+  <p>{{ link.title }}</p>
 {% endfor %}
