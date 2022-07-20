@@ -97,6 +97,7 @@
     "dbtfy_trust_badge_product": false,
     "dbtfy_trust_badge_cart": false,
     "dbtfy_trust_badge_text_small": true,
+    "enable_popup": false,
     "checkout_logo_image": "shopify:\/\/shop_images\/shopCheck_2_2_2_2_2_2_4_2_3_1.png",
     "checkout_logo_position": "center",
     "checkout_heading_font": "Roboto",
