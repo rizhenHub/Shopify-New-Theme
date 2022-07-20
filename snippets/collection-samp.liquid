@@ -32,3 +32,7 @@
 {% else %}
   <p>pop-up disabled</p>
 {% endif %}
+{% for featured_collection in settings.featured_collection %}
+  <p>{{ featured_collection.title }}</p>
+{% endfor %}
+
