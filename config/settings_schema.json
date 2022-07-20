@@ -4542,6 +4542,12 @@
         "id": "border_color",
         "label": "Border Color",
         "default": "#000"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_popup",
+        "label": "Enable popup",
+        "default": true
       }
     ]
   }
