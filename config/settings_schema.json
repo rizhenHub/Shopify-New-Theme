@@ -4559,10 +4559,9 @@
         "default": true
       },
       {
-        "type": "link_list",
-        "id": "header-menu",
-        "label": "Header Menu",
-        "default": "main-menu"
+        "type": "snippet",
+        "id": "featured_products",
+        "label": "Featured products"
       },
       {
         "type": "collection",
