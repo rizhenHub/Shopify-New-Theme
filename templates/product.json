@@ -20,7 +20,7 @@
         "thumbnails_position": "bottom_center",
         "quantity_enabled": true,
         "product_selector": "radio",
-        "show_product_description": true,
+        "show_product_description": false,
         "enable_split_description": false,
         "description_full": false,
         "dbtfy_product_description_position": "separate_section",
