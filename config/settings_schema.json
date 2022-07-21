@@ -4532,6 +4532,11 @@
     "name": "Sample",
     "settings": [
       {
+        "type": "header",
+        "content": "Newsletter settings",
+        "info": "Enabling the popup feature will automatically trigger a newsletter popup on page load."
+      },
+      {
         "type": "color",
         "id": "sample_color",
         "label": "Sample Color",
