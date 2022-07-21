@@ -40,8 +40,26 @@
         "text_size": "large",
         "image_alignement": "left",
         "text_alignment": "text-center",
-        "title": "",
+        "title": "SNU VARMEN I SOMMER MED DET PORTABLE HUNDEBASSENGET!",
         "text": "<p>Liker kjæledyrene dine å være ute? Vi ønsker å gjøre de varme sommerdagene litt mer utholdelige for deg og kjæledyrene dine! I motsetning til et vanlig babybasseng i plast, er The Paw Pool designet spesielt for hunder og bygget for å vare.<br\/><br\/>Mens du ser pelsbabyene dine løpe, hoppe og svømme rundt det nye lekeområdet deres, kan du være trygg på at bassenget ikke lekker eller går i stykker. Sengen er dyp nok til at hunden din kan sitte helt ned og kjøle seg ned ved å sitte, stå eller svømme!<br\/><\/p>",
+        "button_style": "btn--primary",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "1658447653f1f12bc6": {
+      "type": "featured-row",
+      "settings": {
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "image": "shopify:\/\/shop_images\/scared-kitty-hiding.jpg",
+        "image_link": "",
+        "section_style": "section-blank",
+        "text_size": "large",
+        "image_alignement": "right",
+        "text_alignment": "text-center",
+        "title": "Image with text",
+        "text": "<p>Liker kjæledyrene dine å være ute? Vi ønsker å gjøre de varme sommerdagene litt mer utholdelige for deg og kjæledyrene dine! I motsetning til et vanlig babybasseng i plast, er The Paw Pool designet spesielt for hunder og bygget for å vare.<br\/><\/p>",
         "button_style": "btn--primary",
         "button_label": "",
         "button_link": ""
@@ -169,6 +187,7 @@
   "order": [
     "main",
     "165844657697a9043d",
+    "1658447653f1f12bc6",
     "upsell-bundles",
     "pricing-table",
     "product-recommendations",
