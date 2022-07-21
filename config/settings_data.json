@@ -98,7 +98,6 @@
     "dbtfy_trust_badge_cart": false,
     "dbtfy_trust_badge_text_small": true,
     "enable_popup": false,
-    "header-menu": "indoor-navigation",
     "featured_collection": "featured1",
     "checkout_logo_image": "shopify:\/\/shop_images\/shopCheck_2_2_2_2_2_2_4_2_3_1.png",
     "checkout_logo_position": "center",
@@ -106,6 +105,7 @@
     "checkout_body_font": "Roboto",
     "checkout_accent_color": "#000000",
     "checkout_button_color": "#ffd814",
+    "header-menu": "indoor-navigation",
     "sections": {
       "dbtfy-bullet-points": {
         "type": "dbtfy-bullet-points",
