@@ -4549,6 +4549,10 @@
         "default": "#000"
       },
       {
+        "type": "paragraph",
+        "content": "It is recommended not to decrease the show     after value below 3 seconds."
+      },
+      {
         "type": "checkbox",
         "id": "enable_popup",
         "label": "Enable popup",
