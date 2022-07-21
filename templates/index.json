@@ -102,37 +102,6 @@
     },
     "1658446343e42e5779": {
       "type": "hero",
-      "blocks": {
-        "c05f81e1-edb1-4f3f-8ccd-14dda48984c9": {
-          "type": "slide",
-          "settings": {
-            "title": "",
-            "overlay": true,
-            "image": "shopify:\/\/shop_images\/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg",
-            "image_position": "center center",
-            "image_position_mobile": "center center",
-            "slide_link": "",
-            "video": "",
-            "heading_text": "Slideshow",
-            "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your story.<\/p>",
-            "text_position": "align-center",
-            "text_position_mobile": "align-center",
-            "text_alignment": "text-center",
-            "text_alignment_mobile": "text-center",
-            "enable_custom_fonts": false,
-            "slideshow_family": "poppins_n4",
-            "button_label": "",
-            "button_link": "shopify:\/\/collections\/all",
-            "button_style": "btn--primary",
-            "button_label_2": "",
-            "button_link_2": "shopify:\/\/collections\/all",
-            "button_style_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "c05f81e1-edb1-4f3f-8ccd-14dda48984c9"
-      ],
       "settings": {
         "show_on_desktop": true,
         "show_on_mobile": true,
