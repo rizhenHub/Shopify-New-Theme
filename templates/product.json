@@ -65,6 +65,78 @@
         "button_link": ""
       }
     },
+    "16584480231c35ed31": {
+      "type": "quotes",
+      "blocks": {
+        "1658448023928ccd52-0": {
+          "type": "quote",
+          "settings": {
+            "title": "",
+            "icon": "format_quote",
+            "quote": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+            "author": "Author's name"
+          }
+        },
+        "1658448023928ccd52-1": {
+          "type": "quote",
+          "settings": {
+            "title": "",
+            "icon": "format_quote",
+            "quote": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+            "author": "Author's name"
+          }
+        },
+        "1658448023928ccd52-2": {
+          "type": "quote",
+          "settings": {
+            "title": "",
+            "icon": "format_quote",
+            "quote": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+            "author": "Author's name"
+          }
+        }
+      },
+      "block_order": [
+        "1658448023928ccd52-0",
+        "1658448023928ccd52-1",
+        "1658448023928ccd52-2"
+      ],
+      "settings": {
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "title": "Testimonials",
+        "subtitle": "",
+        "section_style": "section-blank",
+        "quote_width": "60",
+        "arrows": true,
+        "dots": true,
+        "autoplay": true,
+        "autoplayspeed": 5
+      }
+    },
+    "1658447817edbd4f18": {
+      "type": "featured-products",
+      "settings": {
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "title": "Frequently Bought Together:",
+        "subtitle": "",
+        "section_style": "section-blank",
+        "home_featured_products": "featured1",
+        "rows": "2",
+        "desktop_grid": "4",
+        "mobile_grid": "2",
+        "show_view_all": false,
+        "button_label": "View all",
+        "button_link": "",
+        "button_style": "btn-outline-primary",
+        "slider_related_products": true,
+        "arrows": true,
+        "dots": true,
+        "autoplay": false,
+        "autoplayspeed": 5
+      }
+    },
     "upsell-bundles": {
       "type": "dbtfy-upsell-bundles",
       "disabled": true,
@@ -182,35 +254,14 @@
         "autoplay": true,
         "autoplayspeed": 5
       }
-    },
-    "1658447817edbd4f18": {
-      "type": "featured-products",
-      "settings": {
-        "show_on_desktop": true,
-        "show_on_mobile": true,
-        "title": "Frequently Bought Together:",
-        "subtitle": "",
-        "section_style": "section-blank",
-        "home_featured_products": "featured1",
-        "rows": "2",
-        "desktop_grid": "4",
-        "mobile_grid": "2",
-        "show_view_all": false,
-        "button_label": "View all",
-        "button_link": "",
-        "button_style": "btn-outline-primary",
-        "slider_related_products": true,
-        "arrows": true,
-        "dots": true,
-        "autoplay": false,
-        "autoplayspeed": 5
-      }
     }
   },
   "order": [
     "main",
     "165844657697a9043d",
     "1658447653f1f12bc6",
+    "16584480231c35ed31",
+    "1658447817edbd4f18",
     "upsell-bundles",
     "pricing-table",
     "product-recommendations",
@@ -218,7 +269,6 @@
     "faq-section",
     "related-products",
     "back-to-collection",
-    "quotes",
-    "1658447817edbd4f18"
+    "quotes"
   ]
 }
