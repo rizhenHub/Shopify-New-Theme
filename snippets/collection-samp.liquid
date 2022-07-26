@@ -5,7 +5,7 @@
    {% for product in collections[handle].products %}
      <a href = "{{ product.url }}"><p>{{ product.title }}</p></a>
      {% form "product", product %}
-       <input type="hidden" name="id" value="{{       product.first_available_variant.id }}" />
+       <input type="hidden" name="id" value="{{ product.first_available_variant.id }}" />
        <input type="submit" value="Add to Cart"/>
      {% endform %}
    {% endfor %}
