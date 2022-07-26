@@ -3507,7 +3507,7 @@
         "default": "newsletter",
         "info": "t:settings_schema.newsletter_popup.settings.customer_tag.info"
       },
-	    {
+      {
         "type": "paragraph",
         "content": "t:settings_schema.newsletter_popup.settings.paragraph__4.content"
       },
@@ -4525,6 +4525,48 @@
         "id": "dbtfy_wish_list_page",
         "label": "t:settings_schema.wishlist.settings.wishlist_page.label",
         "info": "t:settings_schema.wishlist.settings.wishlist_page.info"
+      }
+    ]
+  },
+  {
+    "name": "Sample",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Newsletter settings",
+        "info": "Enabling the popup feature will automatically trigger a newsletter popup on page load."
+      },
+      {
+        "type": "color",
+        "id": "sample_color",
+        "label": "Sample Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border Color",
+        "default": "#000"
+      },
+      {
+        "type": "paragraph",
+        "content": "It is recommended not to decrease the show     after value below 3 seconds."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_popup",
+        "label": "Enable popup",
+        "default": true
+      },
+      {
+        "type": "snippet",
+        "id": "featured_products",
+        "label": "Featured products"
+      },
+      {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Featured Collection"
       }
     ]
   }

@@ -99,11 +99,25 @@
         "text_alignment": "text-center",
         "text_alignment_mobile": "small--text-center"
       }
+    },
+    "1658446343e42e5779": {
+      "type": "hero",
+      "settings": {
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "section_height": "xlarge",
+        "section_height_mobile": "xlarge",
+        "arrows": true,
+        "dots": true,
+        "autoplay": false,
+        "autoplayspeed": 8
+      }
     }
   },
   "order": [
     "1648159423c87097a7",
     "16481613208b371a1a",
-    "16484820271528fa96"
+    "16484820271528fa96",
+    "1658446343e42e5779"
   ]
 }

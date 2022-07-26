@@ -650,7 +650,7 @@
             {%- if section.settings.show_product_description -%}
               {%- if product_description_position == "under_addtocart" -%}
                 {%- unless is_to_split_description -%}
-                  <div id="productDescription" class="product-single__description spacer-bottom-none rte spacer-top {{ section.settings.text_alignment }} {{ section.settings.text_alignment_mobile }}">
+                  <div id="productDescription"  class="product-single__description spacer-bottom-none rte spacer-top {{ section.settings.text_alignment }} {{ section.settings.text_alignment_mobile }}">
                     {{ product.description | replace: '<p>[split_description]</p>', '' | replace: '[split_description]', '' }}
                   </div>
                 {%- endunless -%}
@@ -742,7 +742,7 @@
 
         {%- if section.settings.show_product_description -%}
           {%- if product_description_position == "separate_section" or is_to_split_description -%}
-            <div id="productDescription" class="product-single__description rte spacer-bottom-none">
+            <div id="productDescription" class="product-single__description rte spacer-bottom-none" >
               {%- liquid
                 if is_to_split_description
                   assign second_part = product.description | split: '<p>[split_description]</p>' | last
