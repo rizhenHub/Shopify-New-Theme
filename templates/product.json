@@ -29,91 +29,6 @@
         "text_alignment_mobile": "small--text-left"
       }
     },
-    "165844657697a9043d": {
-      "type": "featured-row",
-      "settings": {
-        "show_on_desktop": true,
-        "show_on_mobile": true,
-        "image": "shopify:\/\/shop_images\/small-dog-standing-in-doorway.jpg",
-        "image_link": "",
-        "section_style": "section-blank",
-        "text_size": "large",
-        "image_alignement": "left",
-        "text_alignment": "text-center",
-        "title": "SNU VARMEN I SOMMER MED DET PORTABLE HUNDEBASSENGET!",
-        "text": "<p>Liker kjæledyrene dine å være ute? Vi ønsker å gjøre de varme sommerdagene litt mer utholdelige for deg og kjæledyrene dine! I motsetning til et vanlig babybasseng i plast, er The Paw Pool designet spesielt for hunder og bygget for å vare.<br\/><br\/>Mens du ser pelsbabyene dine løpe, hoppe og svømme rundt det nye lekeområdet deres, kan du være trygg på at bassenget ikke lekker eller går i stykker. Sengen er dyp nok til at hunden din kan sitte helt ned og kjøle seg ned ved å sitte, stå eller svømme!<br\/><\/p>",
-        "button_style": "btn--primary",
-        "button_label": "",
-        "button_link": ""
-      }
-    },
-    "1658447653f1f12bc6": {
-      "type": "featured-row",
-      "settings": {
-        "show_on_desktop": true,
-        "show_on_mobile": true,
-        "image": "shopify:\/\/shop_images\/scared-kitty-hiding.jpg",
-        "image_link": "",
-        "section_style": "section-blank",
-        "text_size": "large",
-        "image_alignement": "right",
-        "text_alignment": "text-center",
-        "title": "Image with text",
-        "text": "<p>Liker kjæledyrene dine å være ute? Vi ønsker å gjøre de varme sommerdagene litt mer utholdelige for deg og kjæledyrene dine! I motsetning til et vanlig babybasseng i plast, er The Paw Pool designet spesielt for hunder og bygget for å vare.<br\/><\/p>",
-        "button_style": "btn--primary",
-        "button_label": "",
-        "button_link": ""
-      }
-    },
-    "16584480231c35ed31": {
-      "type": "quotes",
-      "blocks": {
-        "1658448023928ccd52-0": {
-          "type": "quote",
-          "settings": {
-            "title": "",
-            "icon": "format_quote",
-            "quote": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
-            "author": "Author's name"
-          }
-        },
-        "1658448023928ccd52-1": {
-          "type": "quote",
-          "settings": {
-            "title": "",
-            "icon": "format_quote",
-            "quote": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
-            "author": "Author's name"
-          }
-        },
-        "1658448023928ccd52-2": {
-          "type": "quote",
-          "settings": {
-            "title": "",
-            "icon": "format_quote",
-            "quote": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
-            "author": "Author's name"
-          }
-        }
-      },
-      "block_order": [
-        "1658448023928ccd52-0",
-        "1658448023928ccd52-1",
-        "1658448023928ccd52-2"
-      ],
-      "settings": {
-        "show_on_desktop": true,
-        "show_on_mobile": true,
-        "title": "Testimonials",
-        "subtitle": "",
-        "section_style": "section-blank",
-        "quote_width": "60",
-        "arrows": true,
-        "dots": true,
-        "autoplay": true,
-        "autoplayspeed": 5
-      }
-    },
     "1658447817edbd4f18": {
       "type": "featured-products",
       "settings": {
@@ -258,9 +173,6 @@
   },
   "order": [
     "main",
-    "165844657697a9043d",
-    "1658447653f1f12bc6",
-    "16584480231c35ed31",
     "1658447817edbd4f18",
     "upsell-bundles",
     "pricing-table",
