@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "product-template",
+      "type": "product-template2",
       "settings": {
         "show_product_vendor": false,
         "show_product_type": true,
