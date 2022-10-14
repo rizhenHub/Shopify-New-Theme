@@ -1,42 +1,42 @@
 {%- liquid
-    assign first_3d_model = product.media | where: "media_type", "model" | first
-    assign picker_type = section.settings.product_selector
-    assign thumbs_location = section.settings.thumbnails_position
-    assign enable_image_zoom = section.settings.enable_image_zoom
-    assign first_available_variant = product.selected_or_first_available_variant
-    assign enable_arrows = section.settings.enable_arrows
-    assign product_selector = section.settings.product_selector
-  
-    assign enable_image_zoom_on_icon_click = section.settings.enable_image_zoom_on_icon_click
-    assign image_display_type = section.settings.image_display_type
-  
-     if settings.enable_history_state
-      assign enable_history_state = true
-     else
-       assign enable_history_state = false
-     endif
-  
-     if section.settings.media_layout == "stacked"
-      assign stacked_layout = true
-     else
-       assign stacked_layout = false
-     endif
-  
-     if image_display_type == "full_screen_image"
-      assign full_screen_image = true
-     else
-      assign full_screen_image = false
-     endif
-  -%}
+     assign first_3d_model = product.media | where: "media_type", "model" | first
+     assign picker_type = section.settings.product_selector
+     assign thumbs_location = section.settings.thumbnails_position
+     assign enable_image_zoom = section.settings.enable_image_zoom
+     assign first_available_variant = product.selected_or_first_available_variant
+     assign enable_arrows = section.settings.enable_arrows
+     assign product_selector = section.settings.product_selector
+   
+     assign enable_image_zoom_on_icon_click = section.settings.enable_image_zoom_on_icon_click
+     assign image_display_type = section.settings.image_display_type
+   
+      if settings.enable_history_state
+       assign enable_history_state = true
+      else
+        assign enable_history_state = false
+      endif
+   
+      if section.settings.media_layout == "stacked"
+       assign stacked_layout = true
+      else
+        assign stacked_layout = false
+      endif
+   
+      if image_display_type == "full_screen_image"
+       assign full_screen_image = true
+      else
+       assign full_screen_image = false
+      endif
+   -%}
 
 <div itemscope itemtype="http://schema.org/Product" id="section-{{ section.id }}" data-picker-type="{{ picker_type }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}" data-section-type="product-template" data-thumbs-location="{{ thumbs_location }}" data-product-first-available-variant="{{ first_available_variant }}" data-image-zoom-type="{{ image_display_type }}" data-enable-history-state="{{ enable_history_state }}" data-stacked-layout="{{ stacked_layout }}" data-product-selector="{{ product_selector }}" data-enable-arrows="{{ enable_arrows }}" {%- if first_3d_model -%}data-has-model="true"{%- endif -%}>
   <div>
     {{ product.metafields.alireviews.seo_rating_review_key }}
   </div>
   {%- render 'product-template' with product as product,
-      enable_image_zoom_on_icon_click: enable_image_zoom_on_icon_click,
-      full_screen_image: full_screen_image
-     -%}
+       enable_image_zoom_on_icon_click: enable_image_zoom_on_icon_click,
+       full_screen_image: full_screen_image
+      -%}
 </div>
 
 {% schema %}

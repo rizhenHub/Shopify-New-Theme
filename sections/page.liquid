@@ -4,35 +4,37 @@
       <div class="grid__item large--eight-twelfths push--large--two-twelfths">
         <div class="section-header">
           <div class="page-title-wrapper">
-            <h1 class="page-title">{{ page.title }}</h1>
+            <h1 class="page-title">{{ page.title }}
+            </h1>
           </div>
         </div>
 
         {%- if page.content != blank -%}
           <div class="page-content rte">
             {{ page.content }}
-          {%- for collection in collections -%}
-           <p>{{- collection.handle -}}</p>
-         {%- endfor -%}
+            {%- for collection in collections -%}
+              <p>{{- collection.handle -}}
+              </p>
+            {%- endfor -%}
           </div>
         {%- else -%}
           <div class="page-content rte">
             The page content is in progress. Please check again shortly. Thank you!
 
             {% render "collection-samp" %}
-            
-          
+
+
           </div>
         {%- endif -%}
-       
+
       </div>
     </div>
   </div>
 </div>
 
 {% schema %}
-{
-  "name": "t:sections.page.name",
-  "settings": []
-}
+  {
+    "name": "t:sections.page.name",
+    "settings": []
+  }
 {% endschema %}
