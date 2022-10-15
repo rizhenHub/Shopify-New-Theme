@@ -323,9 +323,9 @@
       "header": {
         "type": "header",
         "settings": {
-          "main_menu_link_list": "main-menu",
+          "main_menu_link_list": "",
           "navigation_type": "center",
-          "logo_link": true,
+          "logo_link": false,
           "default_logo": "shopify:\/\/shop_images\/natural_fab.png",
           "default_logo_svg": "",
           "inverted_logo_svg": "",
@@ -404,6 +404,7 @@
         "blocks": {
           "footer-0": {
             "type": "text",
+            "disabled": true,
             "settings": {
               "title": "",
               "column_width": 2,
@@ -420,6 +421,7 @@
           },
           "footer-1": {
             "type": "link_list",
+            "disabled": true,
             "settings": {
               "title": "",
               "column_width": 1,
@@ -430,6 +432,7 @@
           },
           "7e892b4f-a169-4c15-b6b7-8158aac45d2b": {
             "type": "newsletter",
+            "disabled": true,
             "settings": {
               "title": "",
               "column_width": 2,
