@@ -250,8 +250,11 @@
       <a class="visually-hidden event-focus-box" href="#mainContent">{{ "shopify.checkout.general.skip_to_content" | t }}</a>
 
       {%- liquid
-        section "announcement"
-        section "header"
+        unless template == 'product.lymph_drainage_advert'
+          section "announcement"
+          section "header"
+        endunless
+        
         render "dbtfy-menu-bar"
         render "dbtfy-quick-compare", type: "page"
         render "dbtfy-quick-compare", type: "markup"
@@ -290,8 +293,10 @@
       {%- liquid
         render "dbtfy-recently-viewed"
         section "dbtfy-instagram-feed"
-        section "guarantee"
-        section "footer"
+        unless template == 'product.lymph_drainage_advert'
+          section 'guarantee'
+          section 'footer'
+        endunless
       -%}
 
       {%- if settings.show_top_button -%}
