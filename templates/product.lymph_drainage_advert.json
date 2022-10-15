@@ -31,6 +31,7 @@
     },
     "1658447817edbd4f18": {
       "type": "featured-products",
+      "disabled": true,
       "settings": {
         "show_on_desktop": true,
         "show_on_mobile": true,
@@ -104,6 +105,7 @@
     },
     "review-widget": {
       "type": "product-review-widget",
+      "disabled": true,
       "settings": {
       }
     },
