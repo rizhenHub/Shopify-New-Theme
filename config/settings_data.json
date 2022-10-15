@@ -325,7 +325,7 @@
         "settings": {
           "main_menu_link_list": "",
           "navigation_type": "center",
-          "logo_link": false,
+          "logo_link": true,
           "default_logo": "shopify:\/\/shop_images\/natural_fab.png",
           "default_logo_svg": "",
           "inverted_logo_svg": "",
