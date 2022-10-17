@@ -4,19 +4,100 @@
     </div>
 </div>
 <div class="wrapper">
-    <div class="main-right">
-        <span style="font-style: italic; color: rgb(48, 48, 48);">Home > Trending > Products</span>
-        <h3 class="advert_main_title"><strong>Scientifically Proven New Method Beats Every Diet and Workout Plan We Tried So Far (Without Spending $$$$ On Surgery)</strong></h3>
-    </div>
-    <div class="main-left">
+    <div class="flex_me">
+        <div class="main-left">
+            <span style="font-style: italic; color: rgb(48, 48, 48);">Home > Trending > Products</span>
+            <h3 class="advert_main_title"><strong>Scientifically Proven New Method Beats Every Diet and Workout Plan We Tried So Far (Without Spending $$$$ On Surgery)</strong></h3>
+            <div class="author">
+                <img src = "{{ 'emma brandt.png' | asset_img_url: '35x' }}" width: >
+                <span>August 26th, 2022 - <strong>Emma Brandt</strong></span>
+            </div>
+            <p class="highlight">With thousands of verified 5-star reviews, what is it about this product that has people celebrating?</p>
+            <img class="advertorial_banner" src="{{ 'advertorial banner.jpg' | asset_img_url: '880x' }}" alt="advertorial banner">
+            <p class="advert_text_heading">
+                Revealed: How Americans Over 30 Can Get Rid Of Excess Weight Almost Instantly
+            </p>
+            <p>
+                We all know how overpriced gym memberships and diet plans can be. You pay for tablets, diet plans, gym membership, gym instructors... it adds up. 
+                <br><br>
+                It can be extremely aggravating. Giving up on your favorite foods, sweating through your knees in the gym, but results are nowhere to be found.
+                <br><br>
+                And of course, the process is time-consuming. There's no guarantee when and how much weight you'll shed and if it'll start coming back.
+            </p>
+            <p class="advert_text_heading">
+                Why Conventional Options Provide Only Temporary Results in 92% of People... (And What To Do About It)
+            </p>
+            <p style="text-align: center;"><img src="{{ 'moonstone necklace.jpg' | asset_img_url: '455x' }}" alt="moonstone necklace"></p>
+            <p>
+                The reason it's so hard to make progress? A poor <strong>Lymphatic Circulation</strong> leads to metabolic blockages and fat build-up, a condition medically known as <em><strong>lymphedema.</strong></em>
+                <br><br>    
+                Researchers found that 97% of people suffering from weight loss had some sort lymphatic issue hindering their progress.
+                <br><br>
+                A 2019 study at Yale University showed a lethargic lymphatic system doubles fat cell growth and fat storage within the arteries.
+                <br><br>
+                Bottom line is: any workout or diet is bound to fail unless this key factor is taken care of. Almost none of the expensive fitness coaches know this problem exists.
+                <br><br>
+                For your body to stay healthy, the "plumbing" needs to flow smoothly. Otherwise, it all turns into a <strong>frustrating mess</strong> in an instant.
+            </p>
+            <p class="advert_text_heading">
+                The Day I Discovered The Solution That Changed My Life Entirely
+            </p>
+            <p style="text-align: center;"><img src="{{ 'before and after.jpg' | asset_img_url: '415x' }}" alt="moonstone necklace"></p>
+            <p>
+                Thankfully, the solution <strong>exists!</strong>
+                <br><br>
+                A US-based company along with world-class doctors and nutritionists teamed up to bring the solution that top celebrities have been enjoying for years <span style="text-decoration: underline;">to regular people like you and me.</span>
+                <br><br>
+                Many people said it "completely changed" their body and they feel way more confident.
+            </p>
+            <p class="advert_text_heading">
+                This Breakthrough Neckchain Use Electromagnetic Waves To Skyrocket Fat Burning <span style="text-decoration: underline;">in Days</span>
+            </p>
+            <p style="text-align: center;">
+                <img class="lymphatic_system_img" src="{{ 'lymphatic system.jpg' | asset_img_url: '800x' }}" alt="moonstone necklace" >
+            </p>
+            <p>
+                It's called Crystio™ Moonstone Therapeutic Neckchain and have been named a weight-loss marvel by thousands of Americans who have used it since its launch last year. Many users claimed this product transformed their bodies inside and out.
+                <br><br>
+                Suitable for all ages, it transforms your lymphatic function and metabolism. Hence, boosting the fat burning rate by up to 200% without any exercise or diet.
+            </p>
+            <p class="yellow-highlight">
+                Crystio™ currently has a 55% off deal. If you want to check if inventory is still in stock, click here
+            </p>
+            <p>
+                Fair Warning: the word about the Crystio™ Moonstone Therapeutic Neckchain is spreading like wildfire and most customers are buying in bundles.
+                <br><br>
+                We strongly suggest ordering now, before the stock runs out <strong>again</strong>!
+            </p>
+            <p style="text-align: center;">
+                <img src="{{ 'therapeutic necklace.jpg' | asset_img_url: '800x' }}" alt="moonstone necklace" >
+            </p>
+        </div>
+        <div class="main-right">
+            <img src = "{{ 'Moonstone Therapeutic Necklace.jpg' | asset_img_url: '477x' }}" >
+            <button class="btn btn_advert">
+                <span>Check Current <br>Availability »</span>
+            </button>
+            <p>
+                Fair warning: the word about the Crystio™ Moonstone Therapeutic Neckchain are spreading like wildfire and most customers are buying in bundles. <br><br>We strongly suggest ordering now, before the stock runs out!
+            </p>
+            
+        </div>
     </div>
 </div>
 
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    body {
+    span, h3 , button, p {
         font-family: 'Open Sans', sans-serif;
+    }
+    p {
+        font-size: 21px;
+        color: #252A32;
+    }
+    img {
+        border-radius: 0;
     }
     .advertHeading {
         background-color: #221F37;
@@ -29,5 +110,82 @@
         font-size: 2.5rem;
         color: #252A32;
         letter-spacing: inherit;
+    }
+    .flex_me {
+        display:flex;
+        gap:1rem;
+    }
+    .main-left {
+        flex:1;
+    }
+    .main-right {
+        padding-top: .5rem;
+        display:flex;
+        max-width:300px;
+        flex-direction: column;
+    }
+    .btn_advert{
+        border-color: rgb(5, 123, 5);
+        border-style: none none solid;
+        border-width: medium medium 5px;
+        margin: 10px 0px 0px 20px;
+        padding: 5px 70px;
+        background-color: rgb(6, 146, 6);
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .main-right p {
+        padding-top: 1rem;
+    }
+    .author {
+        display:flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .author img {
+        width: 39px;
+        aspect-ratio: auto 39 / 35;
+        height: 35px;
+    }
+    .author span {
+        font-size: 15px;
+    }
+    .highlight {
+        background-color: #BEBEC5;
+        border-width: medium medium medium 3px;
+        border-left: solid;
+        border-color: rgba(34, 31, 55, 0.54);
+        padding-left: .5rem;
+        margin-top:1rem;
+        color: #252A32;
+    }
+    .advertorial_banner {
+        max-width: 100% !important;
+        border-radius: 0;
+    }
+    .advert_text_heading {
+        padding-top: .5rem;
+        font-size: 30px;
+        font-weight: bold;
+        color: #252A32;
+    }
+    .lymphatic_system_img {
+        width: 100%;
+        flex-grow: 1;
+    }
+    .yellow-highlight {
+        font-weight:bold;
+        border-color: rgb(253, 195, 0);
+        border-style: dashed;
+        border-width: 5px;
+        line-height: 1;
+        margin: 10px 0px 0px;
+        padding: 20px 10px;
+        background-color: rgb(255, 247, 220);
+        text-shadow: transparent 0px 0px 0px;
+        text-align: center;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1rem;
     }
 </style>
