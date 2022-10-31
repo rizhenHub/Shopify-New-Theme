@@ -535,7 +535,7 @@
                   <select name="id"
                           id="MainProductSelect-{{ product.id }}"
                           class="product-single__variants no-js product-form__item"
-                          data-section-id="{{ section.id }}">
+                          data-section-id="{{ section.id }}" style="display: block !important; ">
 
                     {% for variant in product.variants %}
                       {%- liquid
