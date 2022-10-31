@@ -1008,8 +1008,8 @@
     const prod_url =  JSON.stringify(samp).slice(2,-1);
     const res = await fetch (window.Shopify.routes.root + prod_url );
     const profile = await res.json();
-    // const show = ({{ product.selected_or_first_available_variant | json }});
-    // console.log(show);
+    const show = ({{ product.selected_or_first_available_variant | json }});
+    console.log(show);
     // console.log(profile.variants);
     const var_length = profile.variants.length;
 
