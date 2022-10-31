@@ -1008,7 +1008,8 @@
     const prod_url =  JSON.stringify(samp).slice(2,-1);
     const res = await fetch (window.Shopify.routes.root + prod_url );
     const profile = await res.json();
-    
+    // const show = ({{ product.selected_or_first_available_variant | json }});
+    // console.log(show);
     // console.log(profile.variants);
     const var_length = profile.variants.length;
 
@@ -1020,8 +1021,6 @@
     for(let i = 0; i<tag.length; i++) {
       tag[i].addEventListener('change',
         function(e) {
-          const show = ({{ product.selected_or_first_available_variant | json }});
-          console.log(show);
           const selected = ($('#MainProductSelect-'+JSON.stringify(selectID)).val());
           const select = document.getElementById('sticky-select');
           select.value = selected;
