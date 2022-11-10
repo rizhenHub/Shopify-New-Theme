@@ -1,406 +1,1114 @@
-<div class="advertHeading">
-    <div class="wrapper">
-        <h4>FASHIONSMINE</h4>
-    </div>
-</div>
-<div class="wrapper">
-    <div class="flex_me">
-        <div class="main-left">
-            <span style="font-style: italic; color: rgb(48, 48, 48);">Home > Trending > Products</span>
-            <h3 class="advert_main_title"><strong>Scientifically Proven New Method Beats Every Diet and Workout Plan We Tried So Far (Without Spending $$$$ On Surgery)</strong></h3>
-            <div class="author">
-                <img src = "{{ 'emma brandt.png' | asset_img_url: '35x' }}" width: >
-                <span>August 26th, 2022 - <strong>Emma Brandt</strong></span>
+<!-- /snippets/product-template.liquid -->
+{%- liquid
+    assign id = section.id
+  
+    assign current_variant = product.selected_or_first_available_variant
+    assign featured_media = current_variant.featured_media | default: product.featured_media
+    assign stacked = false
+  
+    if section.settings.media_layout == "stacked"
+      assign stacked = true
+    endif
+  
+    assign first_media = true
+  
+    if product.media.size > 1
+      assign carousel = true
+    else
+      assign carousel = false
+    endif
+  
+    if emptyState
+      assign vendor = 'home_page.onboarding.product_vendor' | t
+      assign sku = '12345'
+      assign title = 'home_page.onboarding.product_title' | t
+      assign compare_at_price = 2999
+      assign price = 1999
+    else
+      assign vendor = product.vendor
+      assign sku = current_variant.sku
+      assign title = product.title
+      assign compare_at_price = current_variant.compare_at_price
+      assign price = current_variant.price
+    endif
+  
+    if compare_at_price > price
+      assign on_sale = true
+    else
+      assign on_sale = false
+    endif
+  
+    if current_variant.available
+      assign sold_out = false
+    else
+      assign sold_out = true
+    endif
+  
+    assign enable_zoom = section.settings.enable_zoom
+    assign product_image_zoom_size = '1024x1024'
+    assign product_image_scale = '2'
+    assign product_tabs_position = settings.dbtfy_product_tabs_position
+    assign product_description_position = section.settings.dbtfy_product_description_position
+  
+    assign has_description = false
+  
+    if section.settings.show_product_description and product.description != blank
+      assign has_description = true
+    endif
+  
+    assign is_to_split_description = false
+  
+    if has_description and section.settings.enable_split_description and product.description contains "[split_description]"
+      assign is_to_split_description = true
+    endif
+  
+    assign show_info_section = false
+  
+    if is_to_split_description
+      assign show_info_section = true
+    endif
+  
+    if has_description and product_description_position == "separate_section"
+      assign show_info_section = true
+    elsif product_tabs_position == "separate_section"
+        assign show_info_section = true
+    elsif product_description_position == "separate_section"
+        if product_tabs_position != "under_addtocart"
+          if product_tabs_position == "under_description" or product_tabs_position == "above_description"
+            assign show_info_section = true
+          endif
+        endif
+    endif
+  
+    case section.settings.image_size
+      when 'small'
+        assign product_image_width = 'large--five-twelfths'
+        assign product_description_width = 'large--seven-twelfths'
+      when 'medium'
+        assign product_image_width = 'large--six-twelfths'
+        assign product_description_width = 'large--six-twelfths'
+      when 'large'
+        assign product_image_width = 'large--seven-twelfths'
+        assign product_description_width = 'large--five-twelfths'
+    endcase
+  
+    assign carousel_fade_effect = section.settings.enable_fading_effect
+  
+    capture product_collections
+      for collection in product.collections
+        echo collection.handle
+  
+        unless forloop.last
+          echo ","
+        endunless
+      endfor
+    endcapture
+  -%}
+  
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_media | img_url: 'grande' }}">
+  <meta itemprop="productID" content="{{ product.id }}">
+  
+  <div class="product-single" data-product-handle="{{ product.handle }}" data-product-id="{{ product.id }}" data-product-collections="{{ product_collections }}">
+    <div class="box">
+      <div class="wrapper">
+        <div class="grid product-single">
+          <!-- left grid item  -->
+          <div id="ProductMedia-{{ section.id }}" class="grid__item {{ product_image_width }} text-center">
+            {%- if product.media.size > 0 -%}
+              <!-- media group (main media + thumbnails) -->
+              <div id="ProductMediaGroup-{{ section.id }}" class="product-single__media-group-wrapper" data-product-single-media-group-wrapper>
+                <div class="grid grid-small {% if product.media.size > 1 %}grid-spacer {% endif %}product-single__media-group{% unless stacked %} product-single__media-group--single-xr{% endunless %}{% if carousel %} slick{% endif %}"
+                     data-product-single-media-group
+                     {% if carousel_fade_effect %}data-carousel-fade-effect{% endif %}>
+  
+                  {%- liquid
+                    assign height = 850
+                    assign width = 575
+                    assign first_3d_model = product.media | where: "media_type", "model" | first
+  
+                    comment
+                      Display product images
+                    endcomment
+                  -%}
+  
+                  {%- for media in product.media -%}
+                    {%- liquid
+                      assign featured = false
+  
+                      if media == featured_media
+                        assign featured = true
+                      endif
+  
+                      capture thumbnail_alt
+                        if media.media_type == 'video' or media.media_type == 'external_video'
+                          echo 'products.product.video_thumbnail_alt' | t: imageAlt: media.alt | escape
+                        elsif media.media_type == 'model'
+                          echo 'products.product.model_thumbnail_alt' | t: imageAlt: media.alt | escape
+                        else
+                          echo 'products.product.gallery_thumbnail_alt' | t: imageAlt: media.alt | escape
+                        endif
+                      endcapture
+                    -%}
+  
+                    <div class="grid__item product-single__media-flex-wrapper{% if stacked %} product-stacked_media_flex{% endif %}" data-slick-media-label="{{ thumbnail_alt }}" data-product-single-media-flex-wrapper>
+                      <div class="product-single__media-flex">
+                        {%- liquid
+                          render 'media' with media, enable_image_zoom_on_icon_click: enable_image_zoom_on_icon_click, full_screen_image: full_screen_image, stacked: stacked, featured: featured, width: width, height: height, id: id, video_looping: section.settings.enable_video_looping, image_index: forloop.index0
+  
+                          comment
+                            Display a "View in your space" button (multi) for the first visible media and each individual model.
+                            Stacked layout only.
+                          endcomment
+  
+                          if stacked
+                            assign xr_id = false
+  
+                            if first_media and first_3d_model
+                              assign xr_id = first_3d_model.id
+                            elsif media.media_type == 'model'
+                              assign xr_id = media.id
+                            endif
+  
+                            if xr_id
+                              render 'xr-button' with model_id: xr_id, multi: true
+                            endif
+  
+                            assign first_media = false
+                          endif
+                        -%}
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </div>
+  
+                {%- liquid
+                  comment
+                    Display a "View in your space" button (single).
+                    Stacked/Thumbnails layout (mobile)
+                    Thumbnail layout only (desktop)
+                  endcomment
+  
+                  if first_3d_model
+                    render 'xr-button' with model_id: first_3d_model.id, multi: false
+                  endif
+                -%}
+  
+                {%- if product.media.size > 1 -%}
+                <div class="product-single__thumbnails grid grid-small {% if stacked %}medium--hide large--hide{% endif %}{% if carousel %} slick{% endif %}{% if product.images.size <= 5 %} slick-disabled{% endif %}" data-product-thumbnails>
+                  {% for media in product.media %}
+                    <div class="grid__item one-fifth product-thumbnail-wrapper" data-product-thumbnail-wrapper>
+                      {%- liquid
+                        capture thumbnail_alt
+                          if media.media_type == 'video' or media.media_type == 'external_video'
+                            echo 'products.product.video_thumbnail_alt' | t: imageAlt: media.alt | escape
+                          elsif media.media_type == 'model'
+                            echo 'products.product.model_thumbnail_alt' | t: imageAlt: media.alt | escape
+                          else
+                            echo 'products.product.gallery_thumbnail_alt' | t: imageAlt: media.alt | escape
+                          endif
+                        endcapture
+  
+                        assign media_aspect_ratio = media.aspect_ratio | default: media.preview_image.aspect_ratio
+                      -%}
+  
+                      <a class="product--wrapper product-single__thumbnail media-wrapper image-link {% if media == featured_media %} active-thumb{% endif %}"
+                        data-product-thumbnail
+                        data-media-id="{{ media.id }}"
+                        style="padding-top: {{ 1 | divided_by: media_aspect_ratio | times: 100 }}%;">
+                        <img class="product--image product-single__thumb media lazyload"
+                        {%- render 'lazysizes', img: media, img_type: 'responsive' -%}
+                        alt="{{ thumbnail_alt }}"
+                        data-media-id="{{ media.id }}">
+  
+                        {%- if media.media_type == 'video' or media.media_type == 'external_video' or media.media_type == 'model' -%}
+                          <div data-media-type="{{ media.media_type }}" class="product-single__thumbnail-badge">
+                            {% render 'svg-definitions' with media.media_type %}
+                          </div>
+                        {%- endif -%}
+                      </a>
+                    </div>
+                  {% endfor %}
+                </div>
+                {%- endif -%}
+              </div>
+            {%- elsif product.images.size < 1 or emptyState -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+            <hr class="hr-divider hr-rev product-single-divider medium--hide large--hide">
+          </div>
+  
+          <!-- right grid item -->
+          <div id="ProductMeta-{{ section.id }}" class="grid__item product-single__meta--wrapper {{ product_description_width }}{% if emptyState %} large--sticky medium--sticky sticky-check-header{% endif %} {% if sold_out %}variant-soldout{% endif %}">
+            <div class="product-single__meta">
+              {%- liquid
+                assign showProductProperties = false
+  
+                if section.settings.show_product_vendor and product.vendor != blank
+                  assign showProductProperties = true
+                elsif section.settings.show_product_type and product.type != blank
+                  assign showProductProperties = true
+                elsif section.settings.show_product_sku and sku != blank
+                  assign showProductProperties = true
+                endif
+              -%}
+  
+              {%- if showProductProperties -%}
+              <div class="product-header-wrapper spacer-bottom">
+                <ul class="inline-list">
+                  {%- if section.settings.show_product_vendor and product.vendor != blank -%}
+                  <li>
+                    <a href="{{ product.vendor | url_for_vendor }}" class="product-single__vendor text-small">
+                      <span class="{{ settings.icon }} icon-middle">store</span>
+                      <span itemprop="brand">{{ product.vendor }}</span>
+                    </a>
+                  </li>
+                  {%- endif -%}
+  
+                  {%- if section.settings.show_product_type and product.type != blank -%}
+                  <li>
+                    <a href="{{ product.type | url_for_type }}" class="product-single__vendor text-small">
+                      <span class="{{ settings.icon }} icon-middle">folder</span>
+                      {{ product.type }}
+                    </a>
+                  </li>
+                  {%- endif -%}
+  
+                  {%- if section.settings.show_product_sku -%}
+                  <li>
+                    <span class="product-single__sku text-small{% if sku == blank %} hide{% endif %}">
+                      <span class="{{ settings.icon }} icon-middle">settings</span>
+                      <span>SKU: </span>
+                      <span class="variant-sku" itemprop="sku">{{ sku }}</span>
+                    </span>
+                  </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+              {%- endif -%}
+  
+              <div class="grid grid-xsmall flex-nowrap product-title-container">
+                <div class="grid__item flex-fill">
+                  {%- if section.settings.featured_product -%}
+                    {% unless emptyState %}
+                      <a href="{{ product.url }}" class="product-single__full-details">
+                    {% endunless %}
+                  {%- endif -%}
+  
+                    <h1 class="product-single__title{% if section.settings.product_title_large %} page-title{% endif %}"
+                        itemprop="name">
+                      {{ title }}
+                    </h1>
+  
+                  {%- if section.settings.featured_product -%}
+                    {% unless emptyState %}
+                      </a>
+                    {% endunless %}
+                  {%- endif -%}
+                </div>
+  
+              </div>
+  
+              {%- unless emptyState -%}
+                {%- render "review-badge" with product as product, position: "product_page", class: "spacer-bottom" -%}
+                <div class="dbtfy-product-sales-countdown-box main-product-block" {% if product.selected_variant.available == false %}{% endif %}></div>
+              {%- endunless -%}
+  
+              <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-single__meta-info">
+                {%- liquid
+                  assign product_description = product.description | strip_html | replace: "[split_description]", "" | newline_to_br | split: '<br />'
+                  assign filtered_description = ''
+  
+                  for line in product_description
+                    if line != blank
+                      assign filtered_description = filtered_description | append: line
+                    endif
+                  endfor
+                -%}
+  
+                <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+                <meta itemprop="description" content="{{ filtered_description }}">
+                <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+                <link itemprop="availability" href="http://schema.org/{%- if product.available -%}InStock{%- else -%}OutOfStock{%- endif -%}">
+  
+                {%- if current_variant.inventory_quantity > 0 and current_variant.inventory_management == "shopify" -%}
+                <meta itemprop="inventoryLevel" content="{{ current_variant.inventory_quantity }}">
+                {%- endif -%}
+  
+                <div class="price-container text-money text-large spacer-bottom flex align-center{% if current_variant.unit_price_measurement %} price-container--unit-available{% endif %}" data-price-container>
+                  <span id="ProductPrice"
+                    class="product-single__price{% if on_sale %} on-sale text-sale{% endif %}"
+                    itemprop="price"
+                    content="{{ price | divided_by: 100.00 }}"
+                    {% if on_sale %}
+                    aria-label="{{ 'products.general.sale_price' | t }}"
+                    {% else %}
+                    aria-label="{{ 'products.general.regular_price' | t }}"
+                    {% endif %}>
+                    <span class="money">{{ price | money }}</span>
+                  </span>
+  
+                  <!--Added By Henry 05/31/2022-->
+                  <div class="added_by_henry">
+                    <span id="ComparePrice"
+                    class="product-single__price--compare-at text-muted text-strike{% unless on_sale %} hide{% endunless %}"
+                    aria-label="{{ 'products.general.regular_price' | t }}">
+                    <span class="money">{{ compare_at_price | money }}</span>
+                    </span>
+  
+                    <span class="badge grid-product__badge" style="margin-left:.5rem; margin-top: .25rem;">
+                      <span class="material-icons-outlined">local_offer</span>
+                      <span class="product-badge-text">
+                        {%- liquid 
+                           assign cur_price = price | divided_by: 100.00
+                           assign comp_price = compare_at_price | divided_by: 100.00
+                           assign divide_price = cur_price | divided_by: comp_price
+                           assign save_price1 = divide_price | times: 100
+                           assign save_price2 = 100 | minus: save_price1
+  
+                        -%}
+                        SAVE <span id="getme" class="product-badge-discount">{{ save_price2 | round }}%</span>
+                        
+                      </span>
+                    </span>
+                  </div>
+    
+                  {% comment %}
+                  {%- render "dbtfy-discount-saved" with product as product -%}
+                  {% endcomment %}
+  
+                  <div class="product-single__unit">
+                    {%- capture unit_price_separator -%}
+                      <span aria-hidden="true">/</span><span class="visually-hidden">&nbsp;{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+                    {%- endcapture -%}
+  
+                    {%- capture unit_price_base_unit -%}
+                      <span data-unit-price-base-unit>
+                        {%- liquid
+                          if current_variant.unit_price_measurement
+                            if current_variant.unit_price_measurement.reference_value != 1
+                              echo current_variant.unit_price_measurement.reference_value
+                            endif
+  
+                            echo current_variant.unit_price_measurement.reference_unit
+                          endif
+                        -%}
+                      </span>
+                    {%- endcapture -%}
+                    
+                    <span class="product-unit-price">
+                      <span class="visually-hidden">{{ 'products.general.unit_price' | t }}</span>
+                      <span data-unit-price><span class="money"></span>{{ current_variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+                    </span>
+                  </div>
+                </div>
+  
+                <!-- {%- if settings.dbtfy_quick_compare or settings.dbtfy_wish_list -%}
+                  <div class="product-wl-qc-buttons-wrapper flex spacer-bottom">
+                    {%- render "dbtfy-wish-list", type: "button", product: product -%}
+                    {%- render "dbtfy-quick-compare", product: product -%}
+                  </div>
+                {%- endif -%} -->
+  
+                {%- if section.settings.show_product_description -%}
+                  {%- if is_to_split_description -%}
+                    <div id="productDescription" class="product-single__description rte spacer-top {{ section.settings.text_alignment }} {{ section.settings.text_alignment_mobile }}">
+                      {%- liquid
+                        assign first_part = product.description | split: '<p>[split_description]</p>' | first
+  
+                        unless first_part contains '[split_description]'
+                          echo first_part
+                        else
+                          echo product.description | split: '[split_description]' | first
+                        endunless
+                      -%}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+  
+                {%- if emptyState -%}
+                  <div class="product-single__add-to-cart">
+                    <button type="button" class="btn btn--primary btn--add-to-cart full">
+                      <span class="btn__text">
+                        <span class="{{ settings.icon }} button-cart-icon">{{ settings.icon_cart }}</span>
+                        <span class="btn__add-to-cart-text">
+                          {{ 'products.product.add_to_cart' | t }}
+                        </span>
+                      </span>
+                    </button>
+                  </div>
+                {%- else -%}
+                  {%- liquid
+                    assign form_classes = "product-single__form"
+  
+                    if product.has_only_default_variant
+                      assign form_classes = form_classes | append: " product-single__form--no-variants"
+                    endif
+  
+                    assign form_id = "AddToCartForm--" | append: section.id
+  
+                    render "dbtfy-color-swatches" with product as product, id: id
+                  -%}
+  
+                  <div class="dbtfy-size-chart-box"></div>
+                  
+                  <!--Added by Henry 05/31/2022-->
+                  <div>
+                    <ul class="pbp-points inline-list text-left" style="display: grid;"><li class="pbp-point" data-visibility-type="all" data-visibility-product="" data-visibility-collection="" data-visibility-product-types="" data-visibility-product-tags=""><span class="material-icons-outlined icon-width text-secondary">check_circle</span><span> Betal senere med Klarna</span>
+                    </li><li class="pbp-point" data-visibility-type="all" data-visibility-product="" data-visibility-collection="" data-visibility-product-types="" data-visibility-product-tags=""><span class="material-icons-outlined icon-width text-secondary">check_circle</span><span> Vegansk og grusomhetsfri</span>
+                    </li><li class="pbp-point" data-visibility-type="all" data-visibility-product="" data-visibility-collection="" data-visibility-product-types="" data-visibility-product-tags=""><span class="material-icons-outlined icon-width text-secondary">check_circle</span><span> Miljøvennlig</span>
+                    </li></ul>
+                  </div>
+  
+                  {%- form 'product', product, class: form_classes, id: form_id, data-product-form: '' -%}
+                    {%- unless product.has_only_default_variant -%}
+                      <div class="grid grid-small">
+                      {%- for option in product.options_with_values -%}
+                        {%- liquid
+                          assign is_color_option = false
+  
+                          if content_for_header contains 'debutify' and product.available and product.variants.size >= 1 and settings.dbtfy_color_swatches
+                            assign swatch_list = settings.dbtfy_color_swatches_color | split: ","
+  
+                            for swatch in swatch_list
+                              assign swatch_option_name = swatch | handleize
+                              assign option_name = option.name | handleize
+  
+                              if option_name == swatch_option_name
+                                assign is_color_option = true
+                              endif
+                            endfor
+                          endif
+  
+                          assign first_option_value = current_variant.options[forloop.index0] | escape
+                        -%}
+  
+                        <div class="grid__item radio-wrapper product-form__item"{%- if is_color_option -%} hidden{%- endif -%}>
+                          <label class="single-option-radio__label"
+                                 for="ProductSelect-option-{{ forloop.index0 }}"
+                                 data-option-name="{{ option.name | escape }}">
+                            {{ option.name | escape }}: <span class="variant-label-option-value">{{ first_option_value | escape }}</span>
+                          </label>
+  
+                          {%- if section.settings.product_selector == 'radio' -%}
+                            <fieldset class="single-option-radio inline-list"
+                              id="ProductSelect-option-{{ forloop.index0 }}">
+                              {%- assign option_index = forloop.index -%}
+  
+                              {%- for value in option.values -%}
+                                {%- liquid
+                                  assign variant_label_state = true
+  
+                                  if product.options.size == 1
+                                    unless product.variants[forloop.index0].available
+                                      assign variant_label_state = false
+                                    endunless
+                                  endif
+                                -%}
+  
+                                <input type="radio"
+                                  {% if option.selected_value == value -%} checked="checked"{% endif %}
+                                  value="{{ value | escape }}"
+                                  data-index="option{{ option_index }}"
+                                  name="option{{ option.position }}"
+                                  class="single-option-selector__radio js-single-option-selector"
+                                  id="ProductSelect-option-{{ section.id }}-{{ option.name | handleize }}-{{ value | escape }}">
+  
+                                <label for="ProductSelect-option-{{ section.id }}-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="text-strike"{% endunless %}>{{ value | escape }}</label>
+                              {%- endfor -%}
+                            </fieldset>
+                          {%- else -%}
+                            <select name="option{{ option.position }}"
+                                    class="single-option-list-type single-option-selector__radio single-option-selector-{{ section.id }} product-form__input select--small js-single-option-selector"
+                                    id="SingleOptionSelector-{{ forloop.index0 }}"
+                                    data-index="option{{ forloop.index }}">
+                              {%- for value in option.values -%}
+                                <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value | escape }}</option>
+                              {%- endfor -%}
+                            </select>
+                          {%- endif -%}
+                        </div>
+                      {%- endfor -%}
+                      </div>
+                    {%- endunless -%}
+  
+                    <select name="id"
+                            id="MainProductSelect-{{ product.id }}"
+                            class="product-single__variants no-js product-form__item"
+                            data-section-id="{{ section.id }}" style="display: block !important; ">
+  
+                      {% for variant in product.variants %}
+                        {%- liquid
+                          assign product_qty = 0
+  
+                          if variant.inventory_management == "shopify"
+                            if variant.inventory_policy == "continue"
+                              assign product_qty = 99999
+                            else
+                              if variant.inventory_quantity > 0
+                                assign product_qty = variant.inventory_quantity
+                              else
+                                assign product_qty = 0
+                              endif
+                            endif
+                          else
+                            assign product_qty = 99999
+                          endif
+                        -%}
+  
+                        <option
+                            {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                            {% unless variant.available %}disabled="disabled"{% endunless %}
+                            data-sku="{{ variant.sku }}"
+                            data-image="{{variant.image | img_url}}"
+                            data-inventory-policy="{{ variant.inventory_policy }}"
+                            data-inventory-quantity="{{ product_qty }}"
+                            data-product-qty="{{ product_qty }}"
+                            data-option-1="{{ variant.option1 }}"
+                            data-option-2="{{ variant.option2 }}"
+                            data-option-3="{{ variant.option3 }}"
+                            value="{{ variant.id }}"
+                            varPrice ="{{ variant.price | money }}"
+                            varCompPrice ="{{ variant.compare_at_price | money }}">
+                          {%- if variant.available -%}
+                            {{ variant.title }} - {{ variant.price | money_with_currency }}
+                          {%- else -%}
+                            {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                          {%- endif -%}
+                        </option>
+                      {% endfor %}
+                    </select>
+  
+                    {%- liquid
+                      assign hide_quantity_box = true
+  
+                      if section.settings.quantity_enabled or settings.dbtfy_quantity_breaks or settings.dbtfy_inventory_quantity
+                        assign hide_quantity_box = false
+                      endif
+                    -%}
+  
+                    {%- if section.settings.quantity_enabled or settings.dbtfy_quantity_breaks or settings.dbtfy_inventory_quantity -%}
+                      <div class="product-single__quantity spacer-bottom" {%- if hide_quantity_box -%}hidden{%- endif -%}>
+                        {%- assign quantity_id = 'product-' | append: product.id -%}
+  
+                        {%- if section.settings.quantity_enabled or settings.dbtfy_quantity_breaks -%}
+                          <label class="inline-label" for="{{ quantity_id }}" {% if section.settings.quantity_enabled == false and settings.dbtfy_quantity_breaks %}hidden {% endif %}>{{ 'products.product.quantity' | t }}</label>
+                        {%- endif -%}
+  
+                        {%- render "dbtfy-inventory-quantity", product: product -%}
+  
+                        {%- if section.settings.quantity_enabled -%}
+                         <div class="quantity-product-single-{{product.id}}">
+                            {%- render "quantity-selector", type: "product", id: quantity_id -%}
+                         </div>
+                        {%- elsif settings.dbtfy_quantity_breaks -%}
+                         <div class="quantity-product-single-{{product.id}}">
+                          <div class="qty-container"></div>
+                         </div>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+  
+                    <div class="product-single__add-to-cart">
+                      <button type="submit" name="add" id="AddToCart--{{ section.id }}" class="btn btn--primary btn--add-to-cart full"{% unless current_variant.available %} disabled="disabled"{% endunless %}>
+                        <span class="btn__text">
+                          <span class="{{ settings.icon }} button-cart-icon">{{ settings.icon_cart }}</span>
+                          <span class="btn__add-to-cart-text">
+                            {%- liquid
+                              if current_variant.available
+                                echo 'products.product.add_to_cart' | t
+                              else
+                                echo 'products.product.sold_out' | t
+                              endif
+                            -%}
+                          </span>
+                        </span>
+                      </button>
+  
+                      {%- if settings.enable_payment_button -%}
+                        {{ form | payment_button }}
+                      {%- endif -%}
+                    </div>
+                  {%- endform -%}
+  
+                  {% render "dbtfy-back-in-stock", product: product, current_variant: current_variant %}
+                {%- endif -%}
+              </div>
+  
+              {%- render "dbtfy-trust-badge", position: "product_page" -%}
+  
+              {%- if settings.dbtfy_product_tabs -%}
+                {%- if product_tabs_position == "under_addtocart" -%}
+                   <div class="dbtfy-product-tab-box"></div>
+                {%- elsif has_description == false and product_tabs_position == "above_description" -%}
+                  <div class="dbtfy-product-tab-box"></div>
+                {%- elsif has_description and product_description_position == "under_addtocart" and product_tabs_position == "above_description" -%}
+                  <div class="dbtfy-product-tab-box"></div>
+                {%- endif -%}
+              {%- endif -%}
+  
+              {%- if section.settings.show_product_description -%}
+                {%- if product_description_position == "under_addtocart" -%}
+                  {%- unless is_to_split_description -%}
+                    <div id="productDescription"  class="product-single__description spacer-bottom-none rte spacer-top {{ section.settings.text_alignment }} {{ section.settings.text_alignment_mobile }}">
+                      {{ product.description | replace: '<p>[split_description]</p>', '' | replace: '[split_description]', '' }}
+                    </div>
+                  {%- endunless -%}
+                {%- endif -%}
+              {%- endif -%}
+  
+              {%- liquid
+                if settings.dbtfy_product_tabs
+                  if product_tabs_position == "under_description" and product_description_position == "under_addtocart"
+                    echo '<div class="dbtfy-product-tab-box"></div>'
+                  endif
+                endif
+  
+                render "dbtfy-social-discount", type: "button"
+  
+                if section.settings.show_sharing_icons
+                  render "social-sharing", share_button: "btn btn-square-xsmall", container_class: "spacer-top"
+                endif
+              -%}
+  
+              {%- if section.settings.show_product_tags and product.tags.size > 0 -%}
+              <div class="product-tags spacer-top">
+                <ul class="inline-list">
+                  <li class="tag-label">
+                    <span class="{{ settings.icon }}" aria-hidden="true">local_offer</span>
+                    {{ 'blogs.article.tags' | t }}
+                  </li>
+                  {%- for tag in product.tags -%}
+                  <li>
+                    <a class="btn btn-reveal-primary btn--xsmall" href="/collections/all/{{ tag | handleize }}">{{ tag }}</a>
+                  </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+              {%- endif -%}
+  
+              {%- if section.settings.show_product_collections and product.collections.size > 0 -%}
+              <div class="product-tags spacer-top">
+                <ul class="inline-list">
+                  <li class="tag-label">
+                    <span class="{{ settings.icon }}" aria-hidden="true">layers</span>
+                    {{ 'collections.general.catalog_title' | t }}
+                  </li>
+                  {%- for collection in product.collections -%}
+                  <li>
+                    <a class="btn btn-reveal-primary btn--xsmall" href="{{ collection.url }}">{{ collection.title }}</a>
+                  </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+              {%- endif -%}
+  
+              {%- if section.settings.show_full_details -%}
+              <div class="spacer-top">
+                <a class="product-single__full-details text-link"{% unless emptyState %} href="{{ product.url }}"{% endunless %}>
+                  {{ 'products.product.full_details' | t }}
+                  <span class="{{ settings.icon }}" aria-hidden="true">arrow_forward</span>
+                </a>
+              </div>
+              {%- endif -%}
+  
+              {%- if template.name != "product" and emptyState == false -%}
+                <div class="product-single-reviews-wrapper" hidden>
+                  {% render 'review-widget', product: product %}
+                </div>
+              {%- endif -%}
             </div>
-            <p class="highlight">With thousands of verified 5-star reviews, what is it about this product that has people celebrating?</p>
-            <img class="advertorial_banner" src="{{ 'advertorial banner.jpg' | asset_img_url: '880x' }}" alt="advertorial banner">
-            <p class="advert_text_heading">
-                Revealed: How Americans Over 30 Can Get Rid Of Excess Weight Almost Instantly
-            </p>
-            <p>
-                We all know how overpriced gym memberships and diet plans can be. You pay for tablets, diet plans, gym membership, gym instructors... it adds up. 
-                <br><br>
-                It can be extremely aggravating. Giving up on your favorite foods, sweating through your knees in the gym, but results are nowhere to be found.
-                <br><br>
-                And of course, the process is time-consuming. There's no guarantee when and how much weight you'll shed and if it'll start coming back.
-            </p>
-            <p class="advert_text_heading">
-                Why Conventional Options Provide Only Temporary Results in 92% of People... (And What To Do About It)
-            </p>
-            <p style="text-align: center;"><img src="{{ 'moonstone necklace.jpg' | asset_img_url: '455x' }}" alt="moonstone necklace"></p>
-            <p>
-                The reason it's so hard to make progress? A poor <strong>Lymphatic Circulation</strong> leads to metabolic blockages and fat build-up, a condition medically known as <em><strong>lymphedema.</strong></em>
-                <br><br>    
-                Researchers found that 97% of people suffering from weight loss had some sort lymphatic issue hindering their progress.
-                <br><br>
-                A 2019 study at Yale University showed a lethargic lymphatic system doubles fat cell growth and fat storage within the arteries.
-                <br><br>
-                Bottom line is: any workout or diet is bound to fail unless this key factor is taken care of. Almost none of the expensive fitness coaches know this problem exists.
-                <br><br>
-                For your body to stay healthy, the "plumbing" needs to flow smoothly. Otherwise, it all turns into a <strong>frustrating mess</strong> in an instant.
-            </p>
-            <p class="advert_text_heading">
-                The Day I Discovered The Solution That Changed My Life Entirely
-            </p>
-            <p style="text-align: center;"><img src="{{ 'before and after.jpg' | asset_img_url: '415x' }}" alt="moonstone necklace"></p>
-            <p>
-                Thankfully, the solution <strong>exists!</strong>
-                <br><br>
-                A US-based company along with world-class doctors and nutritionists teamed up to bring the solution that top celebrities have been enjoying for years <span style="text-decoration: underline;">to regular people like you and me.</span>
-                <br><br>
-                Many people said it "completely changed" their body and they feel way more confident.
-            </p>
-            <p class="advert_text_heading">
-                This Breakthrough Neckchain Use Electromagnetic Waves To Skyrocket Fat Burning <span style="text-decoration: underline;">in Days</span>
-            </p>
-            <p style="text-align: center;">
-                <img class="lymphatic_system_img" src="{{ 'lymphatic system.jpg' | asset_img_url: '800x' }}" alt="moonstone necklace" >
-            </p>
-            <p>
-                It's called Crystio™ Moonstone Therapeutic Neckchain and have been named a weight-loss marvel by thousands of Americans who have used it since its launch last year. Many users claimed this product transformed their bodies inside and out.
-                <br><br>
-                Suitable for all ages, it transforms your lymphatic function and metabolism. Hence, boosting the fat burning rate by up to 200% without any exercise or diet.
-            </p>
-            <p class="yellow-highlight">
-                Crystio™ currently has a 55% off deal. If you want to check if inventory is still in stock, click here
-            </p>
-            <p>
-                Fair Warning: the word about the Crystio™ Moonstone Therapeutic Neckchain is spreading like wildfire and most customers are buying in bundles.
-                <br><br>
-                We strongly suggest ordering now, before the stock runs out <strong>again</strong>!
-            </p>
-            <p style="text-align: center;">
-                <img src="{{ 'therapeutic necklace.jpg' | asset_img_url: '800x' }}" alt="moonstone necklace" >
-            </p>
-            <p class="advert_text_heading">
-                So, How Does it Work?
-            </p>
-            <p>
-                The <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> operates on Holistic Medical Practice called Crystal Healing Therapy (CHT). Crystal Healing Therapy has been in use for centuries to help treat the body for various ailments.
-                <br><br>
-                "Crystals are made up of different elements or compounds, which <strong>our bodies react to in different ways,"</strong> says Sonaji Saujan, a crystal master healer. Every crystal is unique in its genesis and helps to relieve specific ailments.
-                <br><br>
-                The <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> uses Moonstone also known as hecatolite at its core. When worn it uses electromagnetic waves (EMV) to connect directly to the <strong>medulla oblongata,</strong> part of the brain directly responsible for fluid circulation in human body.
-                <br><br>
-                Studies uncovered Crystal Healing Therapy performed wonders to regulate lymph drainage. National Certification Board for Therapeutic Massage & Body published a total of 48 patients affected by <strong><em>lymphedema</em></strong> in stages II and III were treated. After therapy, a <strong>significant decrease</strong> in deposition of fluid, fat, inflamed lymph nodes, and 70% less swelling was recorded.
-                <br><br>
-                Even experts have expressed amazement at <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain's</a> unique technology and it's ability to provide long-lasting weight loss in record time.
-            </p>
-            <p style="text-align: center;">
-                <img src="{{ 'moonstone.jpg' | asset_img_url: '880x' }}" alt="moonstone necklace" style="width:97%;">
-            </p>
-            <p>
-                Wearing <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> not only helps reduce weight, but also effectively promotes better sleep, reduces stress, improves blood circulation and normalizes blood pressure!
-                <br><br>
-                But why a neckchain? The placement isn't random, the moonstone sits directly on thymus, a gland between neck and chest responsible for draining of excess fluids and production of immune cells.
-                <br><br>
-                In addition to its potential health benefits, <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> is designed to look good with its trendy design.
-                <br><br>
-                With so many astonishing benefits, it's no wonder <strong>thousands of Americans are flocking to Crystio™</strong> to improve their body and general well-being because it will never get easier than this.
-            </p>
-            <p class="advert_text_heading">
-                Who Is It For?
-            </p>
-            <p style="text-align: center;">
-                <img src="{{ 'before and after week1-week8.jpg' | asset_img_url: '880x' }}" alt="before and after" style="width:85%;">
-            </p>
-            <p>
-                Satisfied customers all over the US have said that the <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> proved to be a blessing for:
-                <br><br>
-            </p>
-                <p><span style="color: rgb(129, 215, 66);">✔</span> Weight Loss</p>
-                <p><span style="color: rgb(129, 215, 66);">✔</span> Blood Pressure &amp; Cholesterol Levels</p>
-                <p><span style="color: rgb(129, 215, 66);">✔</span> Stubborn Belly, Leg and Arm Fat</p>
-                <p><span style="color: rgb(129, 215, 66);">✔</span> Swelling &amp; Edema</p>
-                <p><span style="color: rgb(129, 215, 66);">✔</span> Low Metabolism</p>
-                <p><span style="color: rgb(129, 215, 66);">✔</span> Low Energy, Sleepiness and More</p>
-                <br>
-            <p>    
-                Years and years of studies have proven, perfect lymphatic circulation in the body is essential to allow fat loss, a strong metabolism and high energy levels. This is why we recommend everyone to get a few of these amazing <strong>Neckchains</strong> before they run out of stock again.
-            </p>
-            <p style="text-align: center;">
-                <img src="{{ 'electromagnetic waves.jpg' | asset_img_url: '880x' }}" alt="before and after">
-            </p>
-            <p class="advert_text_heading">
-                How To Order Yours
-            </p>
-            <p>
-                Thousands of Positive Reviews and 60-Days Satisfaction Guarantee is causing the stock of <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> running low in America.
-                <br><br>
-                To see if it's in stock in your state at 50% off, click here to access the company website and place an order. We encourage you to get multiple pairs before stock runs out.
-                <br><br>
-                <strong>EDIT: Crystio™</strong> is having an amazing <strong>24-HOUR SALE - 57% OFF + FREE US SHIPPING</strong> with every order!
-            </p>
-            <p style="text-align: center;">
-                <img src="{{ 'moonstone necklace 2.jpg' | asset_img_url: '880x' }}" alt="before and after" style="width:90%;">
-            </p>
-            <p class="advert_text_heading">
-                The Bottom Line:
-            </p>
-            <p>
-                I have to say I was pretty skeptical before I tried <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> for the first time. I've tried going to gym, Keto-Diets, diet pills, but nothing seemed to work. 
-                <br><br>
-                I lost all the motivation and started to think I might be cursed. That's when things got worse for me both physically and mentally.
-                <br><br>
-                Until a friend told me about <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> and how it helped her shed so many pounds and she's now living her best life. It was the push I needed to take control of my life.
-                <br><br>
-                In first few hours of trying on <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a>, I felt light. It was like a weight was lifted off of my chest and my mood elevated. The next morning I woke up so energized, it was like my entire body has come back to life. I've been using Ear Studs for over 6 weeks now and have already dropped 30lbs. Not to mention they look incredible too.
-                <br><br>
-                As I am writing this review, I am going to order 8 more pairs for my Parents and Grandparents. <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> could perform miracles for seniors who want to get back to being active.
-                <br><br>
-                <strong>Bottom Line:</strong> No wonder the <a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a> has been getting rave reviews from people who want to lose weight, stay active, and the elderly. It’s clearly what you need if you've been struggling with your weight, energy levels, edema and more!
-                <br><br>
-                But really, since it completely bulletproofs your body by putting your metabolism in top condition, preventing all these problems to appear in the first place, it’s the ultimate change that should happen to every person.
-            </p>
-            <p style="text-align: center;">
-                <img src="{{ 'internet only offer.jpg' | asset_img_url: '880x' }}" alt="offer" class="internet-only-offer-img">
-            </p>
-            <p class="advert_text_heading">
-                Ready to try the Moonstone Therapeutic Neckchain?
-            </p>
-            <p>
-                It's only available online and can't be found in stores.
-                <br><br>
-                Now that you know about the incredible comfort that this unique innovation can give you, here's how you can give it a try:
-                <br><br>
-                <strong>Step 1:</strong> Order your Moonstone Therapeutic Neckchain from their official website below. <br>
-                <strong>Step 2:</strong> Look good, feel good and achieve all your fitness goals.
-            </p>
-            <p class="yellow-highlight">
-                Crystio™ currently has a 55% off deal. If you want to check if inventory is still in stock, click <a class="link_styling" href="#">here</a>
-            </p>
-            <p style="text-align: center;">
-                <button class="btn btn_advert_main">
-                    <span>Check Current Availability »</span>
+          </div>
+  
+          <!-- {%- render "dbtfy-sticky-addtocart" with product as product, current_variant: current_variant -%} -->
+  
+          {%- render "product-info-json", product: product -%}
+        </div>
+  
+      </div><!-- /.wrapper -->
+    </div><!-- /.box -->
+  </div><!-- /.product-single -->
+  
+  {%- if show_info_section -%}
+  <div class="section-description box {{ section.settings.description_style }} {{ section.settings.text_alignment }} {{ section.settings.text_alignment_mobile }}">
+    <div class="wrapper">
+      <div class="grid">
+        <div class="grid__item{% unless section.settings.description_full %} large--eight-twelfths push--large--two-twelfths{% endunless %}">
+          {%- if settings.dbtfy_product_tabs -%}
+             {%- if product_tabs_position == "separate_section" or product_tabs_position == "above_description" and product_description_position == "separate_section" -%}
+                <div class="dbtfy-product-tab-box"></div>
+            {%- endif -%}
+          {%- endif -%}
+  
+          {%- if section.settings.show_product_description -%}
+            {%- if product_description_position == "separate_section" or is_to_split_description -%}
+              <div id="productDescription" class="product-single__description rte spacer-bottom-none" >
+                {%- liquid
+                  if is_to_split_description
+                    assign second_part = product.description | split: '<p>[split_description]</p>' | last
+  
+                    unless second_part contains '[split_description]'
+                      echo second_part
+                    else
+                      echo product.description | split: '[split_description]' | last
+                    endunless
+                  else
+                    echo product.description | replace: '<p>[split_description]</p>', '' | replace: '[split_description]', ''
+                  endif
+                -%}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+  
+  
+          {%- liquid
+          if settings.dbtfy_product_tabs
+            if product_tabs_position == "under_description" and product_description_position == "separate_section"
+              echo '<div class="dbtfy-product-tab-box"></div>'
+            endif
+          endif
+          -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+  
+  {%- render "dbtfy-addtocart-animation" -%}
+  
+  {%- unless emptyState -%}
+  
+  
+  <div class="sticky_atc">
+    <div class="wrapper">
+      {%- form 'product', product -%}
+        <div class="flex_atc">
+          <div class="image-wrapper-sticky_addtocart{% if mobile_display %} small--hide{% endif %}">
+            <img class="image-link hide image-empty-sticky_addtocart image-sticky_addtocart" src="">
+    
+            {%- if product.has_only_default_variant -%}
+              {%- assign image = product.media.first.preview_image -%}
+    
+              {%- if image != blank -%}
+                <img class="image-link image-sticky_addtocart image-sticky_addtocart-{{ variant.id }} lazyload" data-src="{{ image | img_url: "65x65", crop: "center" }}">
+              {%- else -%}
+                {{ "product-1" | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            {%- else -%}
+              {%- liquid
+                assign first_variant = product.selected_or_first_available_variant
+                
+                if first_variant.image
+                  assign image = first_variant.image
+                else
+                  assign image = product.media.first.preview_image
+                endif
+              -%}
+    
+              {%- if image != blank -%}
+                <img id="sticky_img" class="image-link image-sticky_addtocart lazyload image-sticky_addtocart-{{ first_variant.id }}" data-src="{{ image | img_url: "65x65", crop: "center" }}">
+              {%- else -%}
+                {{ "product-1" | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            {%- endif -%}
+          </div>
+          <div class="overflow-hidden text-wrapper-sticky_addtocart small--hide">
+            <h5 class="title-sticky_addtocart text-ellipsis">{{ product.title }}</h5>
+            <div class="dbtfy-sticky-price-box text-money flex_price align-center small--align-bottom" data-discount-saved='{{ settings.dbtfy_discount_saved }}'>
+              <span class="total-sticky-price{% if settings.dbtfy_sticky_addtocart_position == 'top' and settings.dbtfy_custom_currencies %} tooltip-position-bottom{% endif %}">
+                <span id="sticky_price" class="money" style="color:#d40000;">{{ price | money }}</span>
+              </span>
+    
+              <span class="total-sticky-compare-price text-money text-muted text-strike{% if settings.dbtfy_sticky_addtocart_position == 'top' and settings.dbtfy_custom_currencies %} tooltip-position-bottom{% endif %}">
+                <span id="sticky_compare_price" class="money">{{ compare_at_price | money }}</span>
+              </span>
+    
+              {%- if settings.dbtfy_discount_saved -%}
+                <span class="discount-sticky-price badge small--hide" data-discount-variant="{{ settings.sale_type }}">
+                  <span class="{{ settings.icon }}">local_offer</span>
+                  <span>SAVE</span>
+                  <span id="sticky_save" class="discount-sticky-price-text{% if settings.dbtfy_sticky_addtocart_position == 'top' and settings.dbtfy_custom_currencies %} tooltip-position-bottom{% endif %}"> {{ save_price2 | round }}%</span>
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="sticky_right">
+            <div class="small--flex-fill select-wrapper-sticky_addtocart {% if mobile_display %}small--hide{% endif %} {% if product.has_only_default_variant %}hide{% endif %} hide-empty">
+              <select id="sticky-select" class="select--small small--full text-ellipsis select-sticky_addtocart select-max no-js" name="id" {% if product.has_only_default_variant and product_qty == 0 %} data-product-price="{{ product.price }}" data-product-compare-at-price="{{ product.compare_at_price }}"{% endif %}>
+                {%- for variant in product.variants -%}
+                  {%- liquid
+                    assign product_qty = 0
+      
+                    if variant.inventory_management == "shopify"
+                      if variant.inventory_policy == "continue"
+                        assign product_qty = 99999
+                      else
+                        if variant.inventory_quantity > 0
+                          assign product_qty = variant.inventory_quantity
+                        else
+                          assign product_qty = 0
+                        endif
+                      endif
+                    else
+                      assign product_qty = 99999
+                    endif
+                  -%}
+      
+                  {%- capture option_markup -%}
+                    <option
+                        {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                        value="{{ variant.id }}"
+                        data-image="{{variant.image | img_url}}"
+                        data-price="{{ variant.price }}"
+                        data-compare-at-price="{% if variant.compare_at_price %}{{ variant.compare_at_price }}{% else %}0{% endif %}"
+                        data-product-qty="{{ product_qty }}"
+                        data-option-size="{{ variant.options.size }}"
+                        {% for option in variant.options %}
+                      data-option-{{ forloop.index }}="{{ option }}"
+                        {% endfor %}>
+                      {{ variant.title | escape }}
+                    </option>
+                  {%- endcapture -%}
+      
+                  {%- if settings.dbtfy_linked_options -%}
+                    {%- if product_qty > 0 -%}
+                      {{ option_markup }}
+                    {%- endif -%}
+                  {%- else -%}
+                    {{ option_markup }}
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+            {%- if section.settings.quantity_enabled -%}
+                <div class="quantity-sticky_addtocart small--hide">
+                  {%- assign quantity_id = 'sticky-atc-' | append: product.id -%}
+                  {%- render 'quantity-selector', type: 'product', outlineClass: "input-sticky_addtocart", id: quantity_id -%}
+                </div>
+              {%- endif -%}
+              <div class="text-right button-wrapper-sticky_addtocart {% if mobile_display or product.has_only_default_variant %}small--flex-fill{% endif %}">
+                <button type="submit" class="btn btn--primary small--full text-ellipsis btn--sticky_addtocart js-add-to-cart-button{% if settings.dbtfy_sticky_addtocart_animation %} btn--addtocart_animation{% endif %}" {% unless current_variant.available %} disabled="disabled"{% endunless %}>
+                  <span class="btn__text">
+                    <span class="{{ settings.icon }}">{{ settings.icon_cart }}</span>
+                    <span class="btn__add-to-cart-text btn-text-sticky_addtocart">
+                      {%- if current_variant.available -%}
+                        {{ "products.product.add_to_cart" | t }}
+                      {%- else -%}
+                        {{ "products.product.sold_out" | t }}
+                      {%- endif -%}
+                    </span>
+                  </span>
                 </button>
-            </p>
-            <p style="text-align:center;">
-                <ul><li><strong style="color: rgb(47, 47, 47); font-size: 16px;">Here's a valuable tip: </strong><u style="color: rgb(67, 104, 224); font-size: 16px;"><a class="link_styling" href="#">Crystio™ Moonstone Therapeutic Neckchain</a></u><strong style="color: rgb(47, 47, 47); font-size: 16px;"> </strong><span style="color: rgb(47, 47, 47); font-size: 16px;">are a great gift because they might save everybody who receives them a ton of money on supplements, diet plans &amp; more!</span></li></ul>
-            </p>
-            
+              </div>
+          </div>  
         </div>
-        <div class="main-right">
-            <img src = "{{ 'Moonstone Therapeutic Necklace.jpg' | asset_img_url: '1080x' }}" >
-            <button class="btn btn_advert" >
-                <span>Check Current <br>Availability »</span>
-            </button>
-            <p>
-                Fair warning: the word about the Crystio™ Moonstone Therapeutic Neckchain are spreading like wildfire and most customers are buying in bundles. <br><br>We strongly suggest ordering now, before the stock runs out!
-            </p>
-            
-        </div>
+      {%- endform -%}
     </div>
-</div>
-<div class="headline_inner">
-    <h3 style="text-align: center;"><span style="text-decoration: underline;"><strong>Summer Sale:</strong></span> Ends on Friday at 23:59 </h3>
-</div>
-
-<div class="headline_logo_container">
-    <div class="headline_logo_wrapper">
-        <div class="element_wrap">
-            <img src = "{{ 'crystio logo.jpg' | asset_img_url: '880x' }}" >
-        </div>
-        <div class="element_wrap">
-            <img src = "{{ 'usa flag.jpg' | asset_img_url: '880x' }}" >
-        </div>
-        <div class="element_wrap">
-            <img src = "{{ 'ssl.jpg' | asset_img_url: '880x' }}" >
-        </div>
-        <div class="element_wrap">
-            <h3><strong>Contact Us:</strong></h3>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <hr style="border-top: solid 1px rgba(0,0,0,0.3);">
-    <ul class="footer_menu"><li><a href="privacy" style="text-align: center; display: block;"><span class="text_menu_item">Privacy Policy</span></a></li><li><a href="terms" style="text-align: center; display: block;"><span class="text_menu_item">Terms Of Service</span></a></li><li><a href="refund-policy" style="text-align: center; display: block;"><span class="text_menu_item">Refund Policy</span></a></li><li><a href="shipping" style="text-align: center; display: block;"><span class="text_menu_item">Shipping Policy</span></a></li><li><a href="disclaimer" style="text-align: center; display: block;"><span class="text_menu_item">Disclaimer</span></a></li></ul>
-    <p style="text-align: center;"><span style="font-size: 14px;">Copyright © 2022 Crystio™</span></p>
-</footer>
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    span, h3 , button, p {
-        font-family: 'Open Sans', sans-serif;
+  </div>
+  
+  <style>
+    #sticky_img{
+      width:65px; 
+      height:65px; 
+      object-fit:cover; 
+      min-width: 65px; 
+      min-height: 65px;
     }
-    p {
-        font-size: 21px;
-        color: #252A32;
+    .sticky_atc {
+      display:none;
+      position:fixed;
+      bottom:0;
+      left: 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      width: 100%;
+      margin:auto;
+      z-index: 999;
+      background: #fff;
+      padding:.5rem;
+      box-shadow: 0px -3px 3px #888;
     }
-    img {
-        border-radius: 0;
+    .flex_atc, .sticky_right{
+      display:flex;
+      align-items: center;
+      gap:1rem;
     }
-    .advertHeading {
-        background-color: #221F37;
+    .flex_price {
+      display:flex;
+      gap:.5rem;
     }
-    .advertHeading h4 {
-        padding:1em 0 1em 0;
-        color: #fff;
+    .sticky_right{
+      margin-left: auto;
     }
-    .advert_main_title{
-        font-size: 2.5rem;
-        color: #252A32;
-        letter-spacing: inherit;
-    }
-    .flex_me {
-        display:flex;
-        gap:1rem;
-    }
-    .main-left {
-        flex:1;
-    }
-    .main-right {
-        padding-top: .5rem;
-        display:flex;
-        max-width:300px;
-        flex-direction: column;
-    }
-    .btn_advert{
-        border-color: rgb(5, 123, 5);
-        border-style: none none solid;
-        border-width: medium medium 5px;
-        margin: 10px 0px 0px 20px;
-        padding: 5px 70px;
-        background-color: rgb(6, 146, 6);
-        color: #fff;
-        font-weight: bold;
-        font-size: 18px;
-    }
-    .btn_advert_main{
-        border-style: none none solid;
-        border-width: medium medium 5px;
-        margin: 10px 0px 0px;
-        padding: 10px 40px;
-        background-color: rgb(130, 207, 52);
-        color: #fff;
-        font-weight: bold;
-        font-size: 28px;
-        border-radius: 4px;
-        box-shadow: rgb(37 42 50 / 32%) 0 1px 4px 1px;
-    }
-    .main-right p {
-        padding-top: 1rem;
-    }
-    .author {
-        display:flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    .author img {
-        width: 39px;
-        aspect-ratio: auto 39 / 35;
-        height: 35px;
-    }
-    .author span {
-        font-size: 15px;
-    }
-    .highlight {
-        background-color: #BEBEC5;
-        border-width: medium medium medium 3px;
-        border-left: solid;
-        border-color: rgba(34, 31, 55, 0.54);
-        padding-left: .5rem;
-        margin-top:1rem;
-        color: #252A32;
-    }
-    .advertorial_banner {
-        max-width: 100% !important;
-        border-radius: 0;
-    }
-    .advert_text_heading {
-        padding-top: .5rem;
-        font-size: 30px;
-        font-weight: bold;
-        color: #252A32;
-    }
-    .lymphatic_system_img {
-        width: 100%;
+    @media (max-width: 768px) { 
+      .sticky_right{
+        margin-left: 0;
         flex-grow: 1;
+      }
     }
-    .yellow-highlight {
-        font-weight:bold;
-        border-color: rgb(253, 195, 0);
-        border-style: dashed;
-        border-width: 5px;
-        line-height: 1;
-        margin: 10px 0px 0px;
-        padding: 20px 10px;
-        background-color: rgb(255, 247, 220);
-        text-shadow: transparent 0px 0px 0px;
-        text-align: center;
-        padding: 1rem 1.5rem;
-        margin-bottom: 1rem;
+    @media (max-width: 576px){
+      #sticky_img {
+        width: 48px;
+        height: 48px;
+        min-width: 48px !important;
+        min-height: 48px !important;
+      }
+      .btn--sticky_addtocart {
+        padding: 6px 10px;
+      }
     }
-    .link_styling {
-        color: #4368E0;
-        text-decoration: underline;
+  </style>
+  
+  <script type="application/json" id="ProductJson-{{ section.id }}" class="mainProductJson">
+  {
+    "available": {{ product.available | json }},
+    "collections": {{ product.collections | json }},
+    "compare_at_price": {{ product.compare_at_price | json }},
+    "compare_at_price_max": {{ product.compare_at_price_max | json }},
+    "compare_at_price_min": {{ product.compare_at_price_min | json }},
+    "compare_at_price_varies": {{ product.compare_at_price_varies | json }},
+    "content": {{ product.content | json }},
+    "created_at": {{ product.created_at | json }},
+    "description": {{ product.description | json }},
+    "featured_image": {{ product.featured_image | json }},
+    "first_available_variant_compare_at_price": {{ product.selected_or_first_available_variant.compare_at_price | json }},
+    "handle": {{ product.handle | json }},
+    "id": {{ product.id | json }},
+    "images": {{ product.images | json }},
+    "media": {{ product.media | json }},
+    "options": {{ product.options | json }},
+    "options_with_values": {
+      {% for product_option in product.options_with_values %}
+        "option{{ product_option.position }}": {{ product_option.values | json }}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    },
+    "price": {{ product.price | json }},
+    "price_max": {{ product.price_max | json }},
+    "price_min": {{ product.price_min | json }},
+    "price_varies": {{ product.price_varies | json }},
+    "published_at": {{ product.published_at | json }},
+    "requires_selling_plan": {{ product.requires_selling_plan | json }},
+    "selling_plan_groups": {{ product.selling_plan_groups | json }},
+    "tags": {{ product.tags | json }},
+    "title": {{ product.title | json }},
+    "type": {{ product.type | json }},
+    "variants": {{ product.variants | json }},
+    "vendor": {{ product.vendor | json }},
+    "has_only_default_variant": {{ product.has_only_default_variant | json }}
+  }
+  </script>
+  
+  <script type="application/json" id="ModelJson-{{ section.id }}">
+  {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+  
+  <script>
+    async function getProdInfo() {
+      const samp = {{ product.url | append: '.js' | json }};
+      const prod_url =  JSON.stringify(samp).slice(2,-1);
+      const res = await fetch (window.Shopify.routes.root + prod_url );
+      const profile = await res.json();
+      // const show = ({{ product.selected_or_first_available_variant | json }});
+      // console.log(show);
+      // console.log(profile.variants);
+      const var_length = profile.variants.length;
+  
+      const tag = document.getElementsByTagName('fieldset');
+      const tag2 = document.getElementById('sticky-select');
+  
+      const selectID = {{ product.id | json}};
+  
+      for(let i = 0; i<tag.length; i++) {
+        tag[i].addEventListener('change',
+          function(e) {
+            const selected = ($('#MainProductSelect-'+JSON.stringify(selectID)).val());
+            const select = document.getElementById('sticky-select');
+            select.value = selected;
+            for(let a = 0; a<var_length; a++){
+              if(profile.variants[a].id == parseInt(selected)){
+                if(profile.variants[a].featured_image != null){
+                  document.getElementById('sticky_img').setAttribute('src', profile.variants[a].featured_image.src);
+                }
+                const main_price = document.getElementById('ProductPrice').textContent;
+                const main_compare_price = document.getElementById('ComparePrice').textContent;
+                document.getElementById('sticky_price').textContent = main_price;
+                document.getElementById('sticky_compare_price').textContent = main_compare_price;
+                const var_price = profile.variants[a].price;
+                const var_comp_price = profile.variants[a].compare_at_price;
+                const result_price = Math.round((var_price/var_comp_price)*100);
+                const final_result_price = 100 - result_price;
+                document.getElementById('getme').textContent = final_result_price + '%';
+                document.getElementById('sticky_save').textContent = final_result_price +'%';
+              }
+            }
+          }
+        )
+      }
+    
+      tag2.addEventListener('change',
+        function(e) {
+          const variant_id = document.getElementById('sticky-select');
+          const variant_id_child = variant_id.children;
+          for(let i = 0; i<variant_id_child.length; i++){
+            let selected_checker = false;
+            if(variant_id_child[i].getAttribute('value') == variant_id.value ) {
+              const data_option_size = variant_id_child[i].getAttribute('data-option-size');
+              for(let y = 0; y<data_option_size; y++){
+                const oprion_value = variant_id_child[i].getAttribute('data-option-'+(y+1));
+                const counter = document.getElementsByClassName('single-option-selector__radio js-single-option-selector').length;
+                for(let z = 0; z<counter; z++){
+                  if(document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].getAttribute('value') == oprion_value ){
+                    document.getElementsByClassName('single-option-selector__radio js-single-option-selector')[z].checked = true;
+                  }
+                } 
+              }
+              if(profile.variants[i].featured_image != null)
+              {
+                document.getElementById('sticky_img').setAttribute('src', profile.variants[i].featured_image.src);
+              }
+              const mainSelect = document.getElementById('MainProductSelect-{{ product.id }}');
+              for(let b = 0; b<variant_id_child.length; b++){
+                mainSelect.children[b].removeAttribute("selected");
+                if(mainSelect.children[b].value == variant_id.value){
+                  mainSelect.children[b].setAttribute('selected', 'selected');
+                  const main_var_price = mainSelect.children[b];
+                  document.getElementById('sticky_price').textContent = main_var_price.getAttribute('varprice');
+                  const main_var_compare_price = mainSelect.children[b];
+                  document.getElementById('sticky_compare_price').textContent = main_var_price.getAttribute('varcompprice');
+                  document.getElementById('ProductPrice').textContent =  main_var_price.getAttribute('varprice');
+                  document.getElementById('ComparePrice').textContent =  main_var_price.getAttribute('varcompprice');
+                  const var_price2 = profile.variants[b].price;
+                  const var_comp_price2 = profile.variants[b].compare_at_price;
+                  const result_price2 = Math.round((var_price2/var_comp_price2)*100);
+                  const final_result_price2 = 100 - result_price2;
+                  document.getElementById('getme').textContent = final_result_price2 + '%';
+                  document.getElementById('sticky_save').textContent = final_result_price2 +'%';
+                }
+              }            
+            }
+          }
+        }
+      )
     }
-    .internet-only-offer-img {
-        width:58%;
-    }
-    .headline_inner{
-        background: black;
+    getProdInfo();
+    {% if request.page_type == 'product' %}
+      $(document).ready(function () {
         
-    }
-    .headline_inner h3 {
-        color: #fff;
-        font-size: 18px;
-        margin: 5px 0px;
-        padding: 5px 50px;
-    }
-    .headline_logo_wrapper {
-        display:flex;
-        max-width: 1170px;
-        justify-content: center;
-        align-items:center;
-        margin: auto;
-    }
-    .element_wrap{
-        width: 25%;
-        display:flex;
-    }
-    .element_wrap img{
-        margin:auto;
-    }
-    .footer_menu {
-        display:flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        list-style: none;
-        align-items: center;
-        justify-content: center;
-        color: rgb(37, 42, 50);
-    }
-
-    @media (max-width: 992px) {
-        .flex_me {
-            display:block;
+        const heroHeader = document.querySelector('.section-description');
+        const moveBtn = (e) => {
+          const heroBtn = document.querySelector('.sticky_atc');
+            if(!e[0].isIntersecting){
+              $('.sticky_atc').hide();
+            }
+            if(e[0].isIntersecting){
+              $('.sticky_atc').show();
+            }
         }
-        .main-right {
-            display:none;
-        }
-    }
-    @media (max-width: 576px) {
-        .advert_main_title{
-            font-size: 1.58rem;
-        }
-        .highlight {
-            font-size: 1.15rem;
-        }
-        .advert_text_heading {
-            font-size: 1.2rem;
-        }
-        p {
-            font-size: 1.15rem;
-        }
-        .internet-only-offer-img {
-            width:90%;
-        }
-        .btn_advert_main{
-            font-size: 24px;
-            margin: 10px 0px 0px;
-            padding: 10px;
-        }
-    }
-
-</style>
+        const moveBtnIntersectionObs = new IntersectionObserver(moveBtn);
+        moveBtnIntersectionObs.observe(heroHeader);
+      });
+    {% endif %}
+    
+  </script>
+  
+  {%- endunless -%}
