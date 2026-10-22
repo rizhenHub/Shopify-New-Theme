@@ -21,7 +21,7 @@
   endif
 -%}
 
-{%- capture "form_id" %}ContactForm--{{ section.id }}{%- endcapture -%}
+{%- capture form_id %}ContactForm--{{ section.id }}{%- endcapture -%}
 
 {%- assign classes = "form-vertical" -%}
 
@@ -86,3 +86,13 @@
     </button>
   {%- endif -%}
 {%- endform -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{%- capture "form_id" %}'
+  to: "{%- capture form_id %}"
+  position: 542..564
+{% endcomment %}

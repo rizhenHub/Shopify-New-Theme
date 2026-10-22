@@ -152,10 +152,20 @@
     {%- endfor -%}
   };
 
-  theme.addons = {% render "addons-list" | json %}
+  theme.addons = {% render "addons-list" %}
 
   window.lazySizesConfig = window.lazySizesConfig || {};
   window.lazySizesConfig.customMedia = {
     "--small": `(max-width: ${theme.variables.small}px)`
   };
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render "addons-list" | json %}'
+  to: '{% render "addons-list" %}'
+  position: 8067..8093
+{% endcomment %}

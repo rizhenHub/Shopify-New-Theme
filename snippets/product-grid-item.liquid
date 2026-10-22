@@ -214,7 +214,7 @@
 
     <div class="dbtfy dbtfy-collection_addtocart">
       <div id="CollectionAddtocart">
-        {%- capture "form_classes" %}ca-form{%- endcapture -%}
+        {%- capture form_classes %}ca-form{%- endcapture -%}
 
         {%- form "product", product, class: form_classes, id: nil -%}
           {%- if product.has_only_default_variant -%}
@@ -328,3 +328,13 @@
   </script>
 </div>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{%- capture "form_classes" %}'
+  to: "{%- capture form_classes %}"
+  position: 8922..8949
+{% endcomment %}

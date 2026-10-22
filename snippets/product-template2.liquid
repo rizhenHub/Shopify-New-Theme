@@ -171,7 +171,7 @@
                             endif
   
                             if xr_id
-                              render 'xr-button' with model_id: xr_id, multi: true
+                              render 'xr-button' with model_id, model_id: xr_id, multi: true
                             endif
   
                             assign first_media = false
@@ -190,7 +190,7 @@
                   endcomment
   
                   if first_3d_model
-                    render 'xr-button' with model_id: first_3d_model.id, multi: false
+                    render 'xr-button' with model_id, model_id: first_3d_model.id, multi: false
                   endif
                 -%}
   
@@ -1111,4 +1111,20 @@
     
   </script>
   
-  {%- endunless -%}
+  {%- endunless -%}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                              render 'xr-button' with model_id: xr_id, multi:
+    true"
+  to: "                              render 'xr-button' with model_id, model_id: xr_id,
+    multi: true"
+  position: 7090..7182
+- from: "                    render 'xr-button' with model_id: first_3d_model.id,
+    multi: false"
+  to: "                    render 'xr-button' with model_id, model_id: first_3d_model.id,
+    multi: false"
+  position: 7746..7841
+{%- endcomment -%}
